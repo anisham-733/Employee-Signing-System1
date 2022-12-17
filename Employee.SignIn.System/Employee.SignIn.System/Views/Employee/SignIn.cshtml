@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EmployeeSignIn.Models.EmployeeDetails>
+
+<h4>Search an Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="get" asp-action="SignIn">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p>
+                <div class="form-group">
+                    <label for="FirstName" class="control-label">Enter First Name</label>&nbsp;&nbsp;
+                    <input for="FirstName" type="search" name="FirstName" value="@ViewBag.FirstName" style="width:13em;height:2.5em;" />
+                    @*<span asp-validation-for="FirstName" class="text-danger"></span>*@
+                </div>
+            </p>
+
+            <p style="margin-top:2.5em;position:relative">
+                <div class="form-group">
+                    <label for="LastName" class="control-label">Enter Last Name</label>&nbsp;&nbsp;
+                    <input for="LastName" type="search" name="LastName" value="@ViewBag.LastName" style="width:13em;height:2.5em; position:relative" />&nbsp;&nbsp;
+                    @*<span asp-validation-for="LastName" class="text-danger"></span>*@
+
+                    <input type="submit" value="Search" class="btn btn-primary" style="position:absolute;left:24em; width:8em;height:2.4em" />
+                    <div style="border-right:4px solid black; display:inline-block; line-height:2.4em;height:2.4em;position:absolute;left:34em;"></div>
+                    <div style="display:inline-block;height:3em;position:absolute;left:36em;width:10em;padding-top:0.5em" ;>
+                        <a asp-action="SignIn">Get All Employees</a>
+                    </div>
+                </div>
+
+            </p>
+
+
+
+        </form>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model=>model.Id)</th>
+                <th>@Html.DisplayNameFor(model=>model.Photo)</th>
+                <th>@Html.DisplayNameFor(model=>model.FirstName)</th>
+                <th>@Html.DisplayNameFor(model=>model.LastName)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                TempData["Photo"] = item.Photo;
+                <tr>
+                    <td>@Html.DisplayFor(model=>item.Id)</td>
+                    <td><img src='@TempData["Photo"]' width="200px" height="200px" style="border-radius:50%" /></td>
+                    <td>@Html.DisplayFor(model=>item.FirstName)</td>
+                    <td>@Html.DisplayFor(model=>item.LastName)</td>
+                    <td>
+                        @*<a asp-action="Details" asp-route-id="@item.Id">This is me</a>*@
+                        @Html.ActionLink("This is me", "Details", "Employee", new { id = item.Id, @class = "btn btn-primary" }, null)
+                    </td>
+                </tr>
+
+
+
+
+            }
+        </tbody>
+    </table>
+
+
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

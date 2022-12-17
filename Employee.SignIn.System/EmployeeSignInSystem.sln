@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee.SignIn.System", "Employee.SignIn.System\Employee.SignIn.System.csproj", "{29DCDFC6-1496-459D-838A-83212AECEDB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeSignInSystem", "Employee.SignIn.System\EmployeeSignInSystem.csproj", "{29DCDFC6-1496-459D-838A-83212AECEDB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
