@@ -1,7 +1,9 @@
 ﻿using EmployeeSignInSystem.DataDB;
 using EmployeeSignInSystem.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EmployeeSignInSystem.Repositories
 {
@@ -11,6 +13,23 @@ namespace EmployeeSignInSystem.Repositories
         public EmployeeRepository(EmployeeSigningSystemContext context)
         {
             _DbContext = context;
+        }
+
+        public IEnumerable<EmpQueueDetails> BadgeQueueEmps()
+        {
+            
+            var inQueueEmps = _DbContext.EmployeeTempBadge.
+                Join(_DbContext.EmployeeDetails, empDetails => empDetails.Id, tempBadge => tempBadge.Id,
+                (tempBadge, empDetails) => new EmpQueueDetails
+                {
+                    EmployeeId = empDetails.Id,
+                    FirstName = empDetails.FirstName,
+                    LastName = empDetails.LastName,
+                    Photo = empDetails.Photo,
+                    AssignTime = tempBadge.AssignT
+                }).Where(emp => emp.AssignTime == null).Select(emp => emp);
+
+            return inQueueEmps;
         }
 
         public IEnumerable<EmployeeDetails> FetchDetails(string id)

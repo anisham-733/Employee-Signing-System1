@@ -47,7 +47,14 @@ namespace EmployeeSignIn.Controllers
 
         public IActionResult Details(string Id,EmployeeTempBadge temp)
         {
+            //Saving sign In Time for the selected employee
             var a=_employeeService.SaveSignInTime(Id, temp);
+            if (a != 0)
+            {
+                //Fetching employees who are in queue to receive badges
+                IEnumerable<EmpQueueDetails> inQueueEmps = _employeeService.BadgeQueueEmps();
+
+            }
             return View("BadgeQueue");
 
         }

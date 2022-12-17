@@ -39,5 +39,10 @@ namespace EmployeeSignInSystem.Services
             return _empRepo.GetEmployeesByName(FirstName, LastName);
 
         }
+
+        public IEnumerable<EmpQueueDetails> BadgeQueueEmps()
+        {
+            return _empRepo.BadgeQueueEmps();
+        }
     }
 }
