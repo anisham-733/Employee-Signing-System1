@@ -1,6 +1,6 @@
 using System;
 
-namespace Employee.SignIn.System.Models
+namespace EmployeeSignInSystem.Models
 {
     public class ErrorViewModel
     {

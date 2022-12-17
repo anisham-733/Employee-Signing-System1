@@ -1,4 +1,4 @@
-﻿using Employee.SignIn.System.Models;
+﻿using EmployeeSignInSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Employee.SignIn.System.Controllers
+namespace EmployeeSignInSystem.Controllers
 {
     public class HomeController : Controller
     {
