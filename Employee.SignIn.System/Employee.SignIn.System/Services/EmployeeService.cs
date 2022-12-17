@@ -1,6 +1,7 @@
 ﻿using EmployeeSignInSystem.Models;
 using EmployeeSignInSystem.Repositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EmployeeSignInSystem.Services
 {
@@ -10,6 +11,22 @@ namespace EmployeeSignInSystem.Services
         public EmployeeService(IEmployeeRepository empRepo)
         {
             _empRepo = empRepo;
+        }
+
+        public int SaveSignInTime(string id,EmployeeTempBadge temp)
+        {
+            IEnumerable<EmployeeDetails> details= _empRepo.FetchDetails(id);
+            temp.Id= id;
+            temp.EmployeeFirstName = details.First().FirstName;
+            temp.EmployeeLastName= details.First().LastName;
+            temp.SignInT=System.DateTime.Now;
+            temp.AssignT = null;
+            temp.SignOutT=null;
+            temp.TempBadge = null;
+
+
+            return _empRepo.SaveSignInTime(temp);
+            
         }
 
         public IEnumerable<EmployeeDetails> GetAllEmployees()

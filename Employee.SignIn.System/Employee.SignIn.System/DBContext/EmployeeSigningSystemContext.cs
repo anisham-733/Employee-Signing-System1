@@ -72,7 +72,7 @@ namespace EmployeeSignInSystem.DataDB
                 entity.Property(e => e.SignOutT).HasColumnType("datetime");
 
                 entity.Property(e => e.TempBadge)
-                    .IsRequired()
+                    
                     .HasMaxLength(50);
             });
 

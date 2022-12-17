@@ -7,5 +7,6 @@ namespace EmployeeSignInSystem.Services
     {
         IEnumerable<EmployeeDetails> GetEmployeesByName(string FirstName, string LastName);
         IEnumerable<EmployeeDetails> GetAllEmployees();
+        int SaveSignInTime(string id,EmployeeTempBadge temp);
     }
 }

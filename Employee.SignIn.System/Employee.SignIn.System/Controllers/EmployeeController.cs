@@ -44,6 +44,13 @@ namespace EmployeeSignIn.Controllers
             IEnumerable<EmployeeDetails> empRecords = _employeeService.GetEmployeesByName(FirstName, LastName);
             return View(empRecords);
         }
+
+        public IActionResult Details(string Id,EmployeeTempBadge temp)
+        {
+            var a=_employeeService.SaveSignInTime(Id, temp);
+            return View("BadgeQueue");
+
+        }
         public IActionResult SignOut()
         {
             return View();

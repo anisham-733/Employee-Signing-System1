@@ -13,6 +13,12 @@ namespace EmployeeSignInSystem.Repositories
             _DbContext = context;
         }
 
+        public IEnumerable<EmployeeDetails> FetchDetails(string id)
+        {
+            IEnumerable<EmployeeDetails> details = _DbContext.EmployeeDetails.Where(emp => emp.Id == id).ToList();
+            return details;
+        }
+
         public IEnumerable<EmployeeDetails> GetAllEmployees()
         {
 
@@ -29,5 +35,18 @@ namespace EmployeeSignInSystem.Repositories
 
             return matchingRecords;
         }
+
+        public int SaveSignInTime(EmployeeTempBadge temp)
+        {
+            _DbContext.EmployeeTempBadge.Add(temp);
+            return _DbContext.SaveChanges();
+           
+        }
+
+        //public void SaveSignInTime(string id)
+        //{
+        //    
+        //    IEnumerable<EmployeeTempBadge> _tempBadge=
+        //}
     }
 }
