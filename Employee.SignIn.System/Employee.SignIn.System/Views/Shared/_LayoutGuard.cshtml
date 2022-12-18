@@ -18,17 +18,21 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="SignIn">SignIn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="SignOut">SignOut</a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="Login">Guard Login</a>
                         </li>
 
-                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetBadgeQueue">Badge Queue</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetAssignedBadges">Badge Out</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetReport">Report</a>
+                        </li>
                     </ul>
                 </div>
             </div>

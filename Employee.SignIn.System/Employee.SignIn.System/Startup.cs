@@ -32,6 +32,8 @@ namespace Employee.SignIn.System
             services.AddDbContext<EmployeeSigningSystemContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conn")));
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IGuardService, GuardService>();
+            services.AddScoped<IGuardRepository, GuardRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +60,7 @@ namespace Employee.SignIn.System
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Employee}/{action=Main}/{id?}");
+                    pattern: "{controller=Employee}/{action=SignIn}/{id?}");
             });
         }
     }

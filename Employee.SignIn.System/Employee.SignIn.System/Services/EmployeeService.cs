@@ -44,9 +44,6 @@ namespace EmployeeSignInSystem.Services
 
         }
 
-        public IEnumerable<EmpQueueDetails> BadgeQueueEmps()
-        {
-            return _empRepo.BadgeQueueEmps();
-        }
+        
     }
 }

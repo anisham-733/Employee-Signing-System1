@@ -1,0 +1,61 @@
+﻿@model IEnumerable<EmployeeSignInSystem.Models.EmpQueueDetails>
+@{
+    Layout = "~/Views/Shared/_LayoutGuard.cshtml";
+}
+<h4>Badge Queue</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            
+            <th>
+                Assign Temporary Badge
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            TempData["Photo"] = item.Photo;
+            TempData["TempBadge"] = item.TempBadge;
+            <tr >
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    <img src='@TempData["Photo"]' width="200px" height="200px" style="border-radius:50%" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+
+                <td style="position:relative">
+                    <form asp-controller="Guard" asp-action="AssignBadge" asp-route-id="@item.EmployeeId" method="post" >
+                        <input name="TempBadge" placeholder="Enter Temp Badge No." style="width:12em;height:2.5em;">
+                        <div style="display:inline-block; position:absolute;right:1px ;width:5em">
+
+                        <input type="submit" value="Acknowledge" class="btn btn-primary" style="background-color:forestgreen;">
+                        </div>
+
+                     </form>
+                     </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

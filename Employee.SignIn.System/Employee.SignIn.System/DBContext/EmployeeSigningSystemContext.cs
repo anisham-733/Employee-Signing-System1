@@ -80,5 +80,7 @@ namespace EmployeeSignInSystem.DBContext
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<EmployeeSignInSystem.Models.GuardLoginCreds> GuardLoginCreds { get; set; }
     }
 }

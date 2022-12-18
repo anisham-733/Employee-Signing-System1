@@ -9,7 +9,7 @@ namespace EmployeeSignInSystem.Repositories
         IEnumerable<EmployeeDetails> GetAllEmployees();
         IEnumerable<EmployeeDetails> FetchDetails(string id);
         int SaveSignInTime(EmployeeTempBadge temp);
-        IEnumerable<EmpQueueDetails> BadgeQueueEmps();
+        
         
     }
 }

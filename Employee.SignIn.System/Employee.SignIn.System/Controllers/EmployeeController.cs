@@ -61,9 +61,7 @@ namespace EmployeeSignIn.Controllers
                Response.WriteAsync("<script>alert('Your Request for Temporary Badge has been sent');</script>");
                
                
-                //Fetching employees who are in queue to receive badges
-                //IEnumerable<EmpQueueDetails> inQueueEmps = _employeeService.BadgeQueueEmps();
-                //return View(inQueueEmps);
+                
 
             }
 

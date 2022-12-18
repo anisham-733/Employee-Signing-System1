@@ -16,23 +16,7 @@ namespace EmployeeSignInSystem.Repositories
             _DbContext = context;
         }
 
-        public IEnumerable<EmpQueueDetails> BadgeQueueEmps()
-        {
-            
-            var inQueueEmps = _DbContext.EmployeeTempBadge.
-                Join(_DbContext.EmployeeDetails, tempBadge => tempBadge.EmployeeId, empDetails => empDetails.Id, 
-                (tempBadge, empDetails) => new EmpQueueDetails
-                {
-                    EmployeeId = empDetails.Id,
-                    FirstName = empDetails.FirstName,
-                    LastName = empDetails.LastName,
-                    Photo = empDetails.Photo,
-                    AssignTime = tempBadge.AssignT
-
-                }).Where(emp => emp.AssignTime == null).Select(emp => emp);
-
-            return inQueueEmps;
-        }
+        
 
         public IEnumerable<EmployeeDetails> FetchDetails(string id)
         {

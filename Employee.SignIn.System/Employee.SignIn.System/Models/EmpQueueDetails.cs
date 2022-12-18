@@ -12,6 +12,6 @@ namespace EmployeeSignInSystem.Models
         public string LastName { get; set; }
         public string Photo { get; set; }
         public DateTime? AssignTime { get; set; }
-                   
+        public string TempBadge { get; internal set; }
     }
 }
