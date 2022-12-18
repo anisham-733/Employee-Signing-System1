@@ -54,8 +54,8 @@
                     <td>@Html.DisplayFor(model=>item.FirstName)</td>
                     <td>@Html.DisplayFor(model=>item.LastName)</td>
                     <td>
-                        @*<a asp-action="Details" asp-route-id="@item.Id">This is me</a>*@
-                        @Html.ActionLink("This is me", "GetBadgeQueue", "Employee", new { id = item.Id.ToString(), @class = "btn btn-primary" }, null)
+                        <a asp-action="GetBadgeQueue" asp-route-id="@item.Id" class="btn btn-primary" style="background-color:forestgreen">This is me</a>
+                        @*@Html.ActionLink("This is me", "GetBadgeQueue", "Employee", new { id = item.Id.ToString(), @class="btn btn-primary",style="background-color:Green"},null)*@
                     </td>
                 </tr>
 
