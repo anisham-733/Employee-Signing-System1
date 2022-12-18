@@ -44,8 +44,8 @@ namespace EmployeeSignIn.Controllers
             IEnumerable<EmployeeDetails> empRecords = _employeeService.GetEmployeesByName(FirstName, LastName);
             return View(empRecords);
         }
-
-        public IActionResult Details(string Id,EmployeeTempBadge temp)
+        [HttpGet]
+        public IActionResult GetBadgeQueue(string Id,EmployeeTempBadge temp)
         {
             //Saving sign In Time for the selected employee
             var a=_employeeService.SaveSignInTime(Id, temp);
@@ -53,9 +53,11 @@ namespace EmployeeSignIn.Controllers
             {
                 //Fetching employees who are in queue to receive badges
                 IEnumerable<EmpQueueDetails> inQueueEmps = _employeeService.BadgeQueueEmps();
+                return View(inQueueEmps);
 
             }
-            return View("BadgeQueue");
+            return View();
+            
 
         }
         public IActionResult SignOut()

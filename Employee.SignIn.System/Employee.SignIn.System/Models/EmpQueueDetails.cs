@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeSignInSystem.Models
 {
     public class EmpQueueDetails
     {
+        [Key]
         public string EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

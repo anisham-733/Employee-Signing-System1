@@ -55,7 +55,7 @@
                     <td>@Html.DisplayFor(model=>item.LastName)</td>
                     <td>
                         @*<a asp-action="Details" asp-route-id="@item.Id">This is me</a>*@
-                        @Html.ActionLink("This is me", "Details", "Employee", new { id = item.Id.ToString(), @class = "btn btn-primary" }, null)
+                        @Html.ActionLink("This is me", "GetBadgeQueue", "Employee", new { id = item.Id.ToString(), @class = "btn btn-primary" }, null)
                     </td>
                 </tr>
 

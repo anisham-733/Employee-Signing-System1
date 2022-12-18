@@ -80,5 +80,7 @@ namespace EmployeeSignInSystem.DataDB
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<EmployeeSignInSystem.Models.EmpQueueDetails> EmpQueueDetails { get; set; }
     }
 }
