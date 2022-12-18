@@ -2,9 +2,14 @@
 using EmployeeSignInSystem.Models;
 using EmployeeSignInSystem.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Windows;
+using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Xceed.Wpf.Toolkit;
+using Microsoft.AspNetCore.Http;
 
 namespace EmployeeSignIn.Controllers
 {
@@ -49,14 +54,21 @@ namespace EmployeeSignIn.Controllers
         {
             //Saving sign In Time for the selected employee
             var a=_employeeService.SaveSignInTime(Id, temp);
+            
             if (a != 0)
             {
+               //MessageBox.Show("Do you want to delete?", "demo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+               Response.WriteAsync("<script>alert('Your Request for Temporary Badge has been sent');</script>");
+               
+               
                 //Fetching employees who are in queue to receive badges
-                IEnumerable<EmpQueueDetails> inQueueEmps = _employeeService.BadgeQueueEmps();
-                return View(inQueueEmps);
+                //IEnumerable<EmpQueueDetails> inQueueEmps = _employeeService.BadgeQueueEmps();
+                //return View(inQueueEmps);
 
             }
-            return View();
+
+
+            return RedirectToAction("SignIn");
             
 
         }

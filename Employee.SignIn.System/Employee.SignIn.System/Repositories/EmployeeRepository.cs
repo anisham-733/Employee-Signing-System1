@@ -1,4 +1,5 @@
-﻿using EmployeeSignInSystem.DataDB;
+﻿
+using EmployeeSignInSystem.DBContext;
 using EmployeeSignInSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace EmployeeSignInSystem.Repositories
         {
             
             var inQueueEmps = _DbContext.EmployeeTempBadge.
-                Join(_DbContext.EmployeeDetails, empDetails => empDetails.Id, tempBadge => tempBadge.Id,
+                Join(_DbContext.EmployeeDetails, tempBadge => tempBadge.EmployeeId, empDetails => empDetails.Id, 
                 (tempBadge, empDetails) => new EmpQueueDetails
                 {
                     EmployeeId = empDetails.Id,
@@ -27,6 +28,7 @@ namespace EmployeeSignInSystem.Repositories
                     LastName = empDetails.LastName,
                     Photo = empDetails.Photo,
                     AssignTime = tempBadge.AssignT
+
                 }).Where(emp => emp.AssignTime == null).Select(emp => emp);
 
             return inQueueEmps;

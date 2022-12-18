@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace EmployeeSignInSystem.DataDB
+namespace EmployeeSignInSystem.DBContext
 {
     public partial class EmployeeSigningSystemContext : DbContext
     {
@@ -55,13 +55,15 @@ namespace EmployeeSignInSystem.DataDB
 
             modelBuilder.Entity<EmployeeTempBadge>(entity =>
             {
-                entity.Property(e => e.Id).HasMaxLength(10);
-
                 entity.Property(e => e.AssignT).HasColumnType("datetime");
 
                 entity.Property(e => e.EmployeeFirstName)
                     .IsRequired()
                     .HasMaxLength(50);
+
+                entity.Property(e => e.EmployeeId)
+                    .IsRequired()
+                    .HasMaxLength(10);
 
                 entity.Property(e => e.EmployeeLastName)
                     .IsRequired()
@@ -71,16 +73,12 @@ namespace EmployeeSignInSystem.DataDB
 
                 entity.Property(e => e.SignOutT).HasColumnType("datetime");
 
-                entity.Property(e => e.TempBadge)
-                    
-                    .HasMaxLength(50);
+                entity.Property(e => e.TempBadge).HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-        public DbSet<EmployeeSignInSystem.Models.EmpQueueDetails> EmpQueueDetails { get; set; }
     }
 }

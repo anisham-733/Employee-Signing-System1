@@ -1,5 +1,6 @@
 ﻿using EmployeeSignInSystem.Models;
 using EmployeeSignInSystem.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,7 +17,10 @@ namespace EmployeeSignInSystem.Services
         public int SaveSignInTime(string id,EmployeeTempBadge temp)
         {
             IEnumerable<EmployeeDetails> details= _empRepo.FetchDetails(id);
-            temp.Id= id;
+            Random r=new Random();
+            int tempId = r.Next(1, 1000);
+            temp.Id= tempId;
+            temp.EmployeeId= id;
             temp.EmployeeFirstName = details.First().FirstName;
             temp.EmployeeLastName= details.First().LastName;
             temp.SignInT=System.DateTime.Now;

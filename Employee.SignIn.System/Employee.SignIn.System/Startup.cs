@@ -1,6 +1,7 @@
-using EmployeeSignInSystem.DataDB;
+
 using EmployeeSignInSystem.Repositories;
 using EmployeeSignInSystem.Services;
+using EmployeeSignInSystem.DBContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
