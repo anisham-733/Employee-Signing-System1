@@ -2,17 +2,7 @@
 @{
     Layout = "~/Views/Shared/_LayoutGuard.cshtml";
 }
-<h4>Badge Queue</h4>
-
-
-
-
-<div style="background-color:azure";   >
-    <p style="background-color:greenyellow">
-        @ViewBag.TempBadgeStatus
-    </p>
-
-</div>
+<h4>Badge Out</h4>
 
 <table class="table">
     <thead>
@@ -29,9 +19,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
+                
+            <th>
+                @Html.DisplayNameFor(model => model.TempBadge)
+
+            </th>
             
             <th>
-                Assign Temporary Badge
+                @Html.DisplayNameFor(model => model.AssignTime)
+                
             </th>
         </tr>
     </thead>
@@ -40,7 +36,7 @@
         {
             TempData["Photo"] = item.Photo;
             TempData["TempBadge"] = item.TempBadge;
-            <tr >
+            <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.EmployeeId)
                 </td>
@@ -54,19 +50,15 @@
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
 
-                <td style="position:relative">
-                    <form asp-controller="Guard" asp-action="AssignBadge" asp-route-id="@item.EmployeeId" method="post" >
-                        <input name="TempBadge" placeholder="Enter Temp Badge No." style="width:12em;height:2.5em;">
-                        <div style="display:inline-block; position:absolute;right:1px ;width:5em">
+                <td>
+                    @Html.DisplayFor(modelItem=>item.TempBadge)
+                </td>
 
-                        <input type="submit" value="Acknowledge" class="btn btn-primary" style="background-color:forestgreen;">
-                        </div>
+                <td>
+                    @Html.DisplayFor(modelItem=>item.AssignTime)
+                </td>
 
-                     </form>
-                     </td>
-                
             </tr>
         }
     </tbody>
 </table>
-
