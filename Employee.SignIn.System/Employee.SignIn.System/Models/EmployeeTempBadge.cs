@@ -13,7 +13,7 @@ namespace EmployeeSignInSystem.Models
         public string EmployeeFirstName { get; set; }
         public string EmployeeLastName { get; set; }
         public string TempBadge { get; set; }
-        public DateTime SignInT { get; set; }
+        public DateTime? SignInT { get; set; }
         public DateTime? SignOutT { get; set; }
         public DateTime? AssignT { get; set; }
         public int Id { get; set; }

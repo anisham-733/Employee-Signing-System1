@@ -55,7 +55,7 @@ namespace EmployeeSignInSystem.DBContext
 
             modelBuilder.Entity<EmployeeTempBadge>(entity =>
             {
-                entity.Property(e => e.AssignT).HasColumnType("datetime");
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.EmployeeFirstName)
                     .IsRequired()
@@ -69,10 +69,6 @@ namespace EmployeeSignInSystem.DBContext
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.SignInT).HasColumnType("datetime");
-
-                entity.Property(e => e.SignOutT).HasColumnType("datetime");
-
                 entity.Property(e => e.TempBadge).HasMaxLength(50);
             });
 
@@ -80,7 +76,5 @@ namespace EmployeeSignInSystem.DBContext
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-        public DbSet<EmployeeSignInSystem.Models.GuardLoginCreds> GuardLoginCreds { get; set; }
     }
 }

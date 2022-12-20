@@ -39,7 +39,11 @@ namespace EmployeeSignInSystem.Services
 
         public IEnumerable<EmployeeTempBadge> GetReport(DateTime Sdate = new DateTime(), DateTime Edate = new DateTime(), string FirstName="", string LastName="")
         {
-           return _guardRepo.GetReport(Sdate, Edate, FirstName, LastName);
+            if (FirstName == null && LastName == null)
+            {
+                return _guardRepo.GetReportByTimePeriod(Sdate, Edate);
+            }
+            return _guardRepo.GetReport(Sdate, Edate, FirstName, LastName);
 
 
         }

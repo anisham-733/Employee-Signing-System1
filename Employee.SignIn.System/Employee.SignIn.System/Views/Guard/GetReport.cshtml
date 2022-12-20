@@ -1,5 +1,7 @@
-﻿@*@model IEnumerable<EmployeeSignIn.Models.EmployeeDetails>*@
-
+﻿@model IEnumerable<EmployeeSignInSystem.Models.EmployeeTempBadge>
+@{
+    Layout = "~/Views/Shared/_LayoutGuard.cshtml";
+}
 <h4>Badge Report</h4>
 <hr />
 <div class="row">
@@ -9,7 +11,7 @@
             <p style="position:relative">
                 <div class="form-group">
                     <label for="StartDate" class="control-label">Start Date</label>&nbsp;&nbsp;
-                    <input for="StartDate" type="date" name="StartDate" value="@DateTime.Today" min="1/1/1753" max="@DateTime.Today" style="width:13em;height:2.5em;" />
+                    <input for="StartDate" type="date" name="StartDate" value="@ViewBag.StartDate" min="1/1/1753" max="@DateTime.Today" style="width:13em;height:2.5em;" />
 
                     <label for="FirstName" class="control-label" style="position:absolute;left:24em; width:8em;height:2.4em">First Name</label>&nbsp;&nbsp;
                     <input for="FirstName" type="text" name="FirstName" value="@ViewBag.FirstName" style="width:13em;height:2.5em;position:absolute;left:30em;" />
@@ -20,7 +22,7 @@
             <p style="margin-top:2.5em;position:relative">
                 <div class="form-group">
                     <label for="EndDate" class="control-label">End Date</label>&nbsp;&nbsp;
-                    <input for="EndDate" type="date" name="EndDate" value="@ViewBag.EndDate" style="width:13em;height:2.5em; position:relative" />&nbsp;&nbsp;
+                    <input for="EndDate" type="date" name="EndDate" value="@ViewBag.EndDate" min="1/1/1753" max="@DateTime.Today" style="width:13em;height:2.5em; position:relative" />&nbsp;&nbsp;
                     
                     <label for="LastName" class="control-label" style="position:absolute;left:24em; width:8em;height:2.4em">Last Name</label>&nbsp;&nbsp;
                     <input for="LastName" type="text" name="LastName" value="@ViewBag.LastName" style="width:13em;height:2.5em;position:absolute;left:30em;" />
@@ -31,4 +33,36 @@
 
 
         </form>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th> @Html.DisplayNameFor(model=>model.EmployeeId)</th>
+                <th> @Html.DisplayNameFor(model=>model.EmployeeFirstName)</th>
+                <th> @Html.DisplayNameFor(model=>model.EmployeeLastName)</th>
+                <th> @Html.DisplayNameFor(model=>model.TempBadge)</th>
+                <th> @Html.DisplayNameFor(model=>model.SignInT)</th>
+                <th> @Html.DisplayNameFor(model=>model.AssignT)</th>
+                <th> @Html.DisplayNameFor(model=>model.SignOutT)</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                    <td>@Html.DisplayFor(model=>item.EmployeeId)</td>
+                    <td>@Html.DisplayFor(model=>item.EmployeeFirstName)</td>
+                    <td>@Html.DisplayFor(model=>item.EmployeeLastName)</td>
+                    <td>@Html.DisplayFor(model=>item.TempBadge)</td>
+                    <td>@Html.DisplayFor(model=>item.SignInT)</td>
+                    <td>@Html.DisplayFor(model=>item.AssignT)</td>
+                    <td>@Html.DisplayFor(model=>item.SignOutT)</td>
+                    
+                    
+            </tr>
+            }
+        </tbody>
+    </table>
     </div>

@@ -58,10 +58,15 @@ namespace EmployeeSignInSystem.Controllers
         
         }
 
-        public IActionResult GetReport(DateTime StartDate=new DateTime(), DateTime EndDate=new DateTime(), string FirstName="", string LastName="")
+        public IActionResult GetReport(DateTime StartDate, DateTime EndDate , string FirstName = "", string LastName = "")
         {
+            ViewBag.FirstName=FirstName; ViewBag.LastName=LastName;
+            ViewBag.StartDate=StartDate; ViewBag.EndDate=EndDate;
 
-            return View();
+
+            IEnumerable<EmployeeTempBadge> emps = _guardService.GetReport(StartDate, EndDate, FirstName, LastName);
+
+            return View(emps);
 
         }
     }

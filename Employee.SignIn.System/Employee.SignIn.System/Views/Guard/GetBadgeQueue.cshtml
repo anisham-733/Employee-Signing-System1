@@ -7,12 +7,22 @@
 
 
 
-<div style="background-color:azure";   >
+@*<div style="background-color:azure";   >
     <p style="background-color:greenyellow">
         @ViewBag.TempBadgeStatus
     </p>
 
-</div>
+</div>*@
+
+@if (ViewBag["TempBadgeStatus"] != null)
+{
+    
+    <div class="alert alert-success">
+        <strong>Success !!</strong>
+        @ViewBag.TempBadgeStatus
+
+    </div>
+}
 
 <table class="table">
     <thead>
