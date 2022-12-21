@@ -16,7 +16,15 @@ namespace EmployeeSignInSystem.Repositories
             _DbContext = context;
         }
 
-        
+        public bool checkAlreadyRequested(string id)
+        {
+            IEnumerable<EmployeeTempBadge> checkEmps = _DbContext.EmployeeTempBadge.Where(emp => emp.EmployeeId == id && emp.SignInT == System.DateTime.Today).ToList();
+            if (checkEmps.Any())
+            {
+                return true;
+            }
+            return false;
+        }
 
         public IEnumerable<EmployeeDetails> FetchDetails(string id)
         {

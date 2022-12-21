@@ -2,6 +2,19 @@
 
 <h4>Search an Employee</h4>
 <hr />
+
+@if (ViewBag.RequestStatus != null)
+{
+    <div class="alert alert-success">
+        <strong>Success !!</strong>
+        @ViewBag.RequestStatus
+
+    </div>
+
+}
+
+    
+
 <div class="row">
     <div class="col-md-4">
         <form method="get" asp-action="SignIn">

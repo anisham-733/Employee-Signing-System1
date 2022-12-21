@@ -25,13 +25,7 @@ namespace EmployeeSignIn.Controllers
         {
             return View();
         }
-        //[HttpGet]
-        //public IActionResult SignIn()
-        //{
-        //    var employees=_employeeService.GetAllEmployees();
-
-        //    return View(employees);
-        //}
+       
         [HttpGet]
         public IActionResult SignIn(string FirstName = "", string LastName = "")
         {
@@ -44,28 +38,27 @@ namespace EmployeeSignIn.Controllers
 
             //}
             //Empty string in contains always returns true
+
             ViewBag.FirstName = FirstName;
             ViewBag.LastName = LastName;
+            
+            ViewBag.RequestStatus = TempData["RequestStatus"];
             IEnumerable<EmployeeDetails> empRecords = _employeeService.GetEmployeesByName(FirstName, LastName);
             return View(empRecords);
         }
         [HttpGet]
         public IActionResult GetBadgeQueue(string Id,EmployeeTempBadge temp)
         {
+
             //Saving sign In Time for the selected employee
             var a=_employeeService.SaveSignInTime(Id, temp);
             
             if (a != 0)
             {
-               //MessageBox.Show("Do you want to delete?", "demo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-               Response.WriteAsync("<script>alert('Your Request for Temporary Badge has been sent');</script>");
-               
-               
-                
-
+                TempData["RequestStatus"] = "Your Request for Temporary Badge has been sent";
+                return RedirectToAction("SignIn");
             }
-
-
+            TempData["RequestStatus"] = "You have already sent your Request for Temporary Badge today. It's in queue";
             return RedirectToAction("SignIn");
             
 

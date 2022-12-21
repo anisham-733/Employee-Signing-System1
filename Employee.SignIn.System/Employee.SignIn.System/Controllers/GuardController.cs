@@ -1,10 +1,12 @@
-﻿using EmployeeSignInSystem.Models;
+﻿using Azure.Messaging;
+using EmployeeSignInSystem.Models;
 using EmployeeSignInSystem.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
+using Xceed.Wpf.Toolkit;
 
 namespace EmployeeSignInSystem.Controllers
 {
@@ -43,6 +45,7 @@ namespace EmployeeSignInSystem.Controllers
             var saved=_guardService.SaveAssignTime(TempBadge,id);
             if (saved == 1)
             {
+                
                 TempData["TempBadgeStatus"] = "Temporary Badge is assigned";
                 return RedirectToAction("GetBadgeQueue");
             }

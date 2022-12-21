@@ -16,20 +16,22 @@ namespace EmployeeSignInSystem.Services
 
         public int SaveSignInTime(string id,EmployeeTempBadge temp)
         {
-            IEnumerable<EmployeeDetails> details= _empRepo.FetchDetails(id);
-            Random r=new Random();
-            int tempId = r.Next(1, 1000);
-            temp.Id= tempId;
-            temp.EmployeeId= id;
-            temp.EmployeeFirstName = details.First().FirstName;
-            temp.EmployeeLastName= details.First().LastName;
-            temp.SignInT=System.DateTime.Now;
-            temp.AssignT = null;
-            temp.SignOutT=null;
-            temp.TempBadge = null;
-
-
-            return _empRepo.SaveSignInTime(temp);
+            if (_empRepo.checkAlreadyRequested(id))
+            {
+                IEnumerable<EmployeeDetails> details = _empRepo.FetchDetails(id);
+                Random r = new Random();
+                int tempId = r.Next(1, 1000);
+                temp.Id = tempId;
+                temp.EmployeeId = id;
+                temp.EmployeeFirstName = details.First().FirstName;
+                temp.EmployeeLastName = details.First().LastName;
+                temp.SignInT = System.DateTime.Now;
+                temp.AssignT = null;
+                temp.SignOutT = null;
+                temp.TempBadge = null;
+                return _empRepo.SaveSignInTime(temp);
+            }
+            return 0;
             
         }
 
