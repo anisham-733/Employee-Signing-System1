@@ -1,6 +1,7 @@
 ﻿using EmployeeSignInSystem.DTO;
 using EmployeeSignInSystem.Models.IdentityEntities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace EmployeeSignInSystem.Services
@@ -8,10 +9,13 @@ namespace EmployeeSignInSystem.Services
     public class AccountService : IAccountService
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        
         private readonly ApplicationUser _user;
-        public AccountService(UserManager<ApplicationUser> userManager, ApplicationUser user)
+        public AccountService(UserManager<ApplicationUser> userManager, ApplicationUser user,SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
             _user = user;
         }
         public async Task<IdentityResult> RegisterGuard(RegisterDTO registerDTO)
@@ -22,6 +26,10 @@ namespace EmployeeSignInSystem.Services
             return await _userManager.CreateAsync(_user,registerDTO.Password);
         }
 
-        
+        public async Task SignIn()
+        {
+            //storing cookie in browser
+            await _signInManager.SignInAsync(_user, isPersistent: false);
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace EmployeeSignInSystem.Services
     public interface IAccountService
     {
         Task<IdentityResult> RegisterGuard(RegisterDTO registerDTO);
+        Task SignIn();
     }
 }

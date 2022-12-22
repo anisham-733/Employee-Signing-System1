@@ -73,7 +73,8 @@ namespace Employee.SignIn.System
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            //if identity cookie present in browser, auto submit to server
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();

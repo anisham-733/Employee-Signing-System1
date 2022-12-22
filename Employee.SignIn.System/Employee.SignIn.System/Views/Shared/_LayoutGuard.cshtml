@@ -22,6 +22,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="Login">Guard Login</a>
                         </li>
+                        
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetBadgeQueue">Badge Queue</a>
@@ -32,6 +33,10 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetReport">Report</a>
+                        </li>
+
+                        <li>
+                            @User.Identity?.Name
                         </li>
                     </ul>
                 </div>

@@ -10,12 +10,11 @@ namespace EmployeeSignInSystem.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager; 
+             
         private readonly IAccountService _service;
-        public AccountController(IAccountService service, UserManager<ApplicationUser> userManager)
+        public AccountController(IAccountService service)
         {
             _service = service;
-            _userManager = userManager;
         }
 
         [HttpGet]
@@ -38,6 +37,8 @@ namespace EmployeeSignInSystem.Controllers
             //IdentityResult contains status of Database operation
             if (identityResult.Succeeded)
             {
+                //creating identity cookie and sending it to server as req
+                await _service.SignIn();
                 return RedirectToAction("GetBadgeQueue", "Guard");
 
             }
@@ -50,5 +51,6 @@ namespace EmployeeSignInSystem.Controllers
                 return View(registerDTO);
             }
         }
+
     }
 }
