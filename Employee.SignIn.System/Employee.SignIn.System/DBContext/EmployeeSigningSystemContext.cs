@@ -1,7 +1,10 @@
 ﻿using System;
 using EmployeeSignInSystem.Models;
+using EmployeeSignInSystem.Models.IdentityEntities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using EmployeeSignInSystem.DTO;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -9,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace EmployeeSignInSystem.DBContext
 {
-    public partial class EmployeeSigningSystemContext : DbContext
+    public partial class EmployeeSigningSystemContext :IdentityDbContext<ApplicationUser,ApplicationRole,Guid>
     {
         public EmployeeSigningSystemContext()
         {
@@ -34,6 +37,7 @@ namespace EmployeeSignInSystem.DBContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<EmployeeDetails>(entity =>
             {
                 entity.Property(e => e.Id)
@@ -76,5 +80,9 @@ namespace EmployeeSignInSystem.DBContext
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<EmployeeSignInSystem.DTO.RegisterDTO> RegisterDTO { get; set; }
+
+        
     }
 }

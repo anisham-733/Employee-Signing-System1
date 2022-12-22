@@ -3,7 +3,7 @@ using System;
 
 namespace EmployeeSignInSystem.Models.IdentityEntities
 {
-    public class ApplicationUser:IdentityUser<Guid>
+    public class ApplicationRole:IdentityRole<Guid>
     {
     }
 }

@@ -25,7 +25,7 @@ namespace EmployeeSignInSystem.Services
                 temp.EmployeeId = id;
                 temp.EmployeeFirstName = details.First().FirstName;
                 temp.EmployeeLastName = details.First().LastName;
-                temp.SignInT = System.DateTime.Now;
+                temp.SignInT = System.DateTime.Today;
                 temp.AssignT = null;
                 temp.SignOutT = null;
                 temp.TempBadge = null;

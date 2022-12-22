@@ -19,8 +19,9 @@ namespace EmployeeSignInSystem.Repositories
         public bool checkAlreadyRequested(string id)
         {
             IEnumerable<EmployeeTempBadge> checkEmps = _DbContext.EmployeeTempBadge.Where(emp => emp.EmployeeId == id && emp.SignInT == System.DateTime.Today).ToList();
-            if (checkEmps.Any())
+            if (checkEmps.Count()==0)
             {
+                //not in database
                 return true;
             }
             return false;

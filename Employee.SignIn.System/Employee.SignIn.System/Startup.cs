@@ -13,6 +13,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EmployeeSignInSystem.Models.IdentityEntities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNet.Identity;
 
 namespace Employee.SignIn.System
 {
@@ -29,12 +33,30 @@ namespace Employee.SignIn.System
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddDbContext<EmployeeSigningSystemContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conn")));
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<EmployeeSigningSystemContext>()
+                .AddDefaultTokenProviders()
+                .AddUserStore<UserStore<ApplicationUser, ApplicationRole, EmployeeSigningSystemContext, Guid>>()
+                .AddRoleStore<RoleStore<ApplicationRole, EmployeeSigningSystemContext, Guid>>();
+
+
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ApplicationUser, ApplicationUser>();
+            //services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<Microsoft.AspNetCore.Identity.UserManager<ApplicationUser>, Microsoft.AspNetCore.Identity.UserManager<ApplicationUser>>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IGuardService, GuardService>();
             services.AddScoped<IGuardRepository, GuardRepository>();
+            
         }
+
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -65,3 +87,4 @@ namespace Employee.SignIn.System
         }
     }
 }
+

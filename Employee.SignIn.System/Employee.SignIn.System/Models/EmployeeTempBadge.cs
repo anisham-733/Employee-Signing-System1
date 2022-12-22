@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -16,6 +17,7 @@ namespace EmployeeSignInSystem.Models
         public DateTime? SignInT { get; set; }
         public DateTime? SignOutT { get; set; }
         public DateTime? AssignT { get; set; }
+        [Key]
         public int Id { get; set; }
     }
 }

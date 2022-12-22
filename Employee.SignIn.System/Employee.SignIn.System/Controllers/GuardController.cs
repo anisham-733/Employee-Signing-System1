@@ -72,5 +72,6 @@ namespace EmployeeSignInSystem.Controllers
             return View(emps);
 
         }
+       
     }
 }
