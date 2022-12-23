@@ -17,29 +17,89 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-3">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item ">
+                                <i class="fa-solid fa-user"></i>
+                                <a class="nav-link text-dark" style="color:orangered;">@User.Identity?.Name</a>
+                            </li>
+
+                            <li class="nav-item ">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                        </ul>
+                        <ul class="navbar-nav flex-grow-1">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (ViewBag.CurrentUrl == "~/Guard/GetBadgeQueue")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" style="background-color:greenyellow; text-decoration:underline"  asp-area="" asp-controller="Guard" asp-action="GetBadgeQueue">Badge Queue</a>
+                                </li>
+
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetBadgeQueue">Badge Queue</a>
+                                </li>
+                            }
+
+                            @if (ViewBag.CurrentUrl == "~/Guard/GetAssignedBadges")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" style="color:greenyellow; text-decoration:underline" asp-area="" asp-controller="Guard" asp-action="GetAssignedBadges">Badge Out</a>
+                                    </li>
+                                
+                            }
+                            else{
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetAssignedBadges">Badge Out</a>
+                                    </li>
+                            }
+                            @if (ViewBag.CurrentUrl == "~/Guard/GetReport")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" style="color:greenyellow; text-decoration:underline" asp-area="" asp-controller="Guard" asp-action="GetReport">Report</a>
+                                </li>
+
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetReport">Report</a>
+                                    </li>
+                            }
+
+                        }
+                        else
+                        {
+                                                 
+                                                       
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="Login">Guard Login</a>
+                             </li>
+                            
                         
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="Login">Guard Login</a>
-                        </li>
-                        
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetBadgeQueue">Badge Queue</a>
-                        </li>
-
-                        <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetAssignedBadges">Badge Out</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Guard" asp-action="GetReport">Report</a>
-                        </li>
-
-                        <li>
-                            @User.Identity?.Name
-                        </li>
+                                                      
+                        }
                     </ul>
+                   
+                       
                 </div>
+              @*  <div class="flex-grow-1 pr" >
+                    <div class="navbar account-links">
+                     <ul>
+                         <li class="nav-item">
+                             <a class="nav-link text-dark" style="float:right">@User.Identity?.Name</a>
+                          </li>
+                     </ul>   
+                    
+                    </div>
+                </div>*@
             </div>
         </nav>
     </header>

@@ -9,10 +9,12 @@ namespace EmployeeSignInSystem.DTO
         [Required(ErrorMessage ="UserName can't be blank")]
         public string Username { get; set; }
 
+        [Key]
+
         [Required(ErrorMessage = "Email can't be blank")]
         [EmailAddress(ErrorMessage ="Email should be in proper format")]
 
-        [Key]
+        
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Phone number can't be blank")]
