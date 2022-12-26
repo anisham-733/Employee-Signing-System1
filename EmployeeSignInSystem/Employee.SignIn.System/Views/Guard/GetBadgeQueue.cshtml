@@ -6,26 +6,11 @@
 <h4>Badge Queue</h4>
 
 
-
-
-@*<div style="background-color:azure";   >
-    <p style="background-color:greenyellow">
-        @ViewBag.TempBadgeStatus
-    </p>
-
-</div>*@
-
-@*@if (@ViewBag["TempBadgeStatus"] != null)
-
-@*}*@
 @if (ViewBag.TempBadgeStatus != null)
 {
     <div class="alert alert-success">
-        <strong>Success !!</strong>
         @ViewBag.TempBadgeStatus
-
     </div>
-
 }
 
 <table class="table">

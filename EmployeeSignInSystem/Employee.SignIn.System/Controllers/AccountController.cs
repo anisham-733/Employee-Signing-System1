@@ -81,6 +81,7 @@ namespace EmployeeSignInSystem.Controllers
         public async Task<IActionResult> Logout()
         {
             await _service.SignOut();
+            
             return RedirectToAction("Login", "Account");
         }
 

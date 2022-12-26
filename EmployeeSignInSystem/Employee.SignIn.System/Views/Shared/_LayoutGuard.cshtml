@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Employee" asp-action="Main">Employee Signing System</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Employee" asp-action="SignIn">Employee Signing System</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
                             @if (ViewBag.CurrentUrl == "~/Guard/GetBadgeQueue")
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" style="background-color:greenyellow; text-decoration:underline"  asp-area="" asp-controller="Guard" asp-action="GetBadgeQueue">Badge Queue</a>
+                                    <a class="nav-link text-dark" style="background-color:mediumseagreen; text-decoration:underline"  asp-area="" asp-controller="Guard" asp-action="GetBadgeQueue">Badge Queue</a>
                                 </li>
 
                             }
@@ -50,7 +50,7 @@
                             @if (ViewBag.CurrentUrl == "~/Guard/GetAssignedBadges")
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" style="color:greenyellow; text-decoration:underline" asp-area="" asp-controller="Guard" asp-action="GetAssignedBadges">Badge Out</a>
+                                    <a class="nav-link text-dark" style="background-color:mediumseagreen; text-decoration:underline" asp-area="" asp-controller="Guard" asp-action="GetAssignedBadges">Badge Out</a>
                                     </li>
                                 
                             }
@@ -62,7 +62,7 @@
                             @if (ViewBag.CurrentUrl == "~/Guard/GetReport")
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" style="color:greenyellow; text-decoration:underline" asp-area="" asp-controller="Guard" asp-action="GetReport">Report</a>
+                                    <a class="nav-link text-dark" style="background-color:mediumseagreen; text-decoration:underline" asp-area="" asp-controller="Guard" asp-action="GetReport">Report</a>
                                 </li>
 
                             }

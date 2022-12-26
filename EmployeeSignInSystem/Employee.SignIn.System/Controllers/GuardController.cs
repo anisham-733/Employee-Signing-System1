@@ -16,22 +16,7 @@ namespace EmployeeSignInSystem.Controllers
         public GuardController(IGuardService guardService)
         {
             _guardService = guardService;
-        }
-
-        [HttpGet]
-        public IActionResult Login(string Username, string Password)
-        {
-            if(_guardService.checkLogin(Username, Password))
-            {
-                return RedirectToAction("GetBadgeQueue");
-                
-                
-            }
-
-
-
-            return View();
-        }
+        }      
 
         public IActionResult GetBadgeQueue()
         {
@@ -49,8 +34,7 @@ namespace EmployeeSignInSystem.Controllers
                 TempData["TempBadgeStatus"] = "Temporary Badge is assigned";
                 return RedirectToAction("GetBadgeQueue");
             }
-
-            
+            TempData["TempBadgeStatus"] = "This Temporary badge number has already been assigned to other employee";
             return RedirectToAction("GetBadgeQueue");
         }
 
@@ -65,8 +49,6 @@ namespace EmployeeSignInSystem.Controllers
         {
             ViewBag.FirstName=FirstName; ViewBag.LastName=LastName;
             ViewBag.StartDate=StartDate; ViewBag.EndDate=EndDate;
-
-
             IEnumerable<EmployeeTempBadge> emps = _guardService.GetReport(StartDate, EndDate, FirstName, LastName);
 
             return View(emps);

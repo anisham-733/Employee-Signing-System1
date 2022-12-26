@@ -18,14 +18,22 @@ namespace EmployeeSignInSystem.Repositories
 
         public int SaveAssignTime(string TempBadge, string Id)
         {
-            var badgeOutEmps = _DBContext.EmployeeTempBadge.Where(emp => emp.EmployeeId == Id);
-            foreach(var x in badgeOutEmps)
+            var alreadyExistingBadge = _DBContext.EmployeeTempBadge.Where(emp => emp.TempBadge==TempBadge);
+            if (alreadyExistingBadge.Count() == 0)
             {
-                x.TempBadge = TempBadge;
-                x.AssignT = System.DateTime.Now;
+                //not in database
+                var badgeOutEmps = _DBContext.EmployeeTempBadge.Where(emp=>emp.EmployeeId==Id);
+                foreach (var x in badgeOutEmps)
+                {
+                    x.TempBadge = TempBadge;
+                    x.AssignT = System.DateTime.Now;
+                }
+                return _DBContext.SaveChanges();
+
             }
-            return _DBContext.SaveChanges();
+            return 0;
             
+            ;          
 
             
         }
@@ -65,19 +73,18 @@ namespace EmployeeSignInSystem.Repositories
                 }).Where(emp => emp.SignOutTime == null && emp.AssignTime!=null).Select(emp => emp);
 
             return inQueueEmps;
-
         }
 
         public IEnumerable<EmployeeTempBadge> GetReport(DateTime SDate = default, DateTime EDate = default, string FirstName = "", string LastName = "")
         {
             //for all 4 && condition
-            return _DBContext.EmployeeTempBadge.Where(emp => emp.EmployeeFirstName.Contains(FirstName) && emp.EmployeeLastName.Contains(LastName) &&  emp.SignInT > SDate ).ToList();
+            return _DBContext.EmployeeTempBadge.Where(emp => emp.EmployeeFirstName.Contains(FirstName) && emp.EmployeeLastName.Contains(LastName) && emp.SignInT>SDate && emp.SignOutT<EDate).ToList();
         }
 
         public IEnumerable<EmployeeTempBadge> GetReportByTimePeriod(DateTime Sdate, DateTime EDate)
         {
             //And condition to implement is signout time
-            var getByTime = _DBContext.EmployeeTempBadge.Where(emp => emp.SignInT > Sdate || emp.SignOutT < EDate).ToList();
+            var getByTime = _DBContext.EmployeeTempBadge.Where(emp => emp.SignInT > Sdate && emp.SignInT<EDate && (emp.SignOutT < EDate || emp.SignOutT==null)).ToList();
             return getByTime;
         }
     }

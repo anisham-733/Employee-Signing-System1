@@ -46,6 +46,14 @@ namespace EmployeeSignInSystem.Services
 
         }
 
-        
+        public IEnumerable<EmpQueueDetails> GetEmpsToSignOut(string FirstName, string LastName)
+        {
+            return _empRepo.GetEmpsToSignOut(FirstName, LastName);
+        }
+
+        public int SaveSignOutTime(string EmployeeId)
+        {
+            return _empRepo.SaveSignOutTime(EmployeeId);
+        }
     }
 }

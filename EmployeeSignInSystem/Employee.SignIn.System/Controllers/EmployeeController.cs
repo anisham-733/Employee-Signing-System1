@@ -21,28 +21,15 @@ namespace EmployeeSignIn.Controllers
             _employeeService = employeeService;
         }
 
-        public IActionResult Main()
-        {
-            return View();
-        }
-       
+             
         [HttpGet]
         public IActionResult SignIn(string FirstName = "", string LastName = "")
         {
-            //if (string.IsNullOrEmpty(FirstName) & (string.IsNullOrEmpty(LastName)))
-            //    {
-            //    var employees = _employeeService.GetAllEmployees();
-
-            //    return View(employees);
-
-
-            //}
-            //Empty string in contains always returns true
-
             ViewBag.FirstName = FirstName;
             ViewBag.LastName = LastName;
             
             ViewBag.RequestStatus = TempData["RequestStatus"];
+            ViewBag.SignOutEmp = TempData["SignOutEmp"];
             IEnumerable<EmployeeDetails> empRecords = _employeeService.GetEmployeesByName(FirstName, LastName);
             return View(empRecords);
         }
@@ -63,9 +50,30 @@ namespace EmployeeSignIn.Controllers
             
 
         }
-        public IActionResult SignOut()
+        
+        public IActionResult SignOut(string FirstName="",string LastName="")
         {
-            return View();
+            ViewBag.FirstName = FirstName;
+            ViewBag.LastName = LastName;
+            IEnumerable<EmpQueueDetails> emps = _employeeService.GetEmpsToSignOut(FirstName, LastName);
+
+
+            return View(emps);
+        }
+
+        [HttpGet]
+        public IActionResult SignEmpOut(string EmployeeId)
+        {
+            //Saving sign In Time for the selected employee
+            var a = _employeeService.SaveSignOutTime(EmployeeId);
+
+            if (a != 0)
+            {
+                TempData["SignOutEmp"] = "Successfully signed out";
+                return RedirectToAction("SignIn");
+            }
+            TempData["SignOutEmp"] = "Error occurred";
+            return RedirectToAction("SignIn");
         }
     }
 }
