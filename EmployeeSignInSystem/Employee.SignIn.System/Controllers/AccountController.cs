@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using Xceed.Wpf.Toolkit;
 
 namespace EmployeeSignInSystem.Controllers
 {
@@ -15,6 +16,31 @@ namespace EmployeeSignInSystem.Controllers
         public AccountController(IAccountService service)
         {
             _service = service;
+        }
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginDTO loginDTO)
+        {
+            if (ModelState.IsValid == false)
+            {
+                ViewBag.Errors = ModelState.Values.SelectMany(temp => temp.Errors).Select(temp => temp.ErrorMessage);
+                return View(loginDTO);
+            }
+
+            //else sign in using email and password
+            var result = await _service.SignInPassword(loginDTO);
+            if (result.Succeeded)
+            {
+                TempData["LoginStatus"] = "Login successfull";
+                return RedirectToAction("GetBadgeQueue", "Guard");
+            }
+            TempData["LoginStatus"] = "Login not successfull!!. Invalid username or password";
+            ModelState.AddModelError("Login", "Invalid username or password");
+            return View(loginDTO);
         }
 
         [HttpGet]
@@ -50,6 +76,12 @@ namespace EmployeeSignInSystem.Controllers
                 }
                 return View(registerDTO);
             }
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _service.SignOut();
+            return RedirectToAction("Login", "Account");
         }
 
     }

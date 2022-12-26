@@ -83,6 +83,8 @@ namespace EmployeeSignInSystem.DBContext
 
         public DbSet<EmployeeSignInSystem.DTO.RegisterDTO> RegisterDTO { get; set; }
 
+        public DbSet<EmployeeSignInSystem.DTO.LoginDTO> LoginDTO { get; set; }
+
         
     }
 }

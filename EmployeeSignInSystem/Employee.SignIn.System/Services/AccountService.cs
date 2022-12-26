@@ -31,5 +31,16 @@ namespace EmployeeSignInSystem.Services
             //storing cookie in browser
             await _signInManager.SignInAsync(_user, isPersistent: false);
         }
+
+        public async Task<Microsoft.AspNetCore.Identity.SignInResult> SignInPassword(LoginDTO loginDTO)
+        {
+            //after 3 invalid login checks, lockout the account for user
+            return await _signInManager.PasswordSignInAsync(loginDTO.Username, loginDTO.Password, isPersistent: false,lockoutOnFailure:false);
+        }
+
+        public async Task SignOut()
+        {
+            await _signInManager.SignOutAsync();
+        }
     }
 }

@@ -8,5 +8,7 @@ namespace EmployeeSignInSystem.Services
     {
         Task<IdentityResult> RegisterGuard(RegisterDTO registerDTO);
         Task SignIn();
+        Task<SignInResult> SignInPassword(LoginDTO loginDTO);
+        Task SignOut();
     }
 }
