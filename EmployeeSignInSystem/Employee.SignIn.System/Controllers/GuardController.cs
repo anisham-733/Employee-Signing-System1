@@ -49,7 +49,7 @@ namespace EmployeeSignInSystem.Controllers
         {
             ViewBag.FirstName=FirstName; ViewBag.LastName=LastName;
             ViewBag.StartDate=StartDate; ViewBag.EndDate=EndDate;
-            IEnumerable<EmployeeTempBadge> emps = _guardService.GetReport(StartDate., EndDate, FirstName, LastName);
+            IEnumerable<EmployeeTempBadge> emps = _guardService.GetReport(StartDate, EndDate, FirstName, LastName);
 
             return View(emps);
 

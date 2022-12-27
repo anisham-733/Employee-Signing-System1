@@ -12,7 +12,7 @@
             <p style="position:relative">
                 <div class="form-group">
                     <label for="StartDate" class="control-label">Start Date</label>&nbsp;&nbsp;
-                    <input for="StartDate" type="date" name="StartDate" value="@ViewBag.StartDate" min="1/1/1753" max="@DateTime.Today" style="width:13em;height:2.5em;" />
+                    <input for="StartDate" type="datetime-local" name="StartDate" value="@ViewBag.StartDate" min="1/1/1753" max="@DateTime.Today" style="width:13em;height:2.5em;" />
 
                     <label for="FirstName" class="control-label" style="position:absolute;left:24em; width:8em;height:2.4em">First Name</label>&nbsp;&nbsp;
                     <input for="FirstName" type="text" name="FirstName" value="@ViewBag.FirstName" style="width:13em;height:2.5em;position:absolute;left:30em;" />
@@ -23,7 +23,7 @@
             <p style="margin-top:2.5em;position:relative">
                 <div class="form-group">
                     <label for="EndDate" class="control-label">End Date</label>&nbsp;&nbsp;
-                    <input for="EndDate" type="date" name="EndDate" value="@ViewBag.EndDate" min="1/1/1753" max="@DateTime.Today" style="width:13em;height:2.5em; position:relative" />&nbsp;&nbsp;
+                    <input for="EndDate" type="datetime-local" name="EndDate" value="@ViewBag.EndDate" min="1/1/1753" max="@DateTime.Today" style="width:13em;height:2.5em; position:relative" />&nbsp;&nbsp;
                     
                     <label for="LastName" class="control-label" style="position:absolute;left:24em; width:8em;height:2.4em">Last Name</label>&nbsp;&nbsp;
                     <input for="LastName" type="text" name="LastName" value="@ViewBag.LastName" style="width:13em;height:2.5em;position:absolute;left:30em;" />
