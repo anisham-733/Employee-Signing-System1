@@ -72,13 +72,12 @@ namespace EmployeeSignInSystem.Repositories
         public int SaveSignInTime(EmployeeTempBadge temp)
         {
             _DbContext.EmployeeTempBadge.Add(temp);
-            return _DbContext.SaveChanges();
-           
+            return _DbContext.SaveChanges();           
         }
 
         public int SaveSignOutTime(string EmployeeId)
         {
-            var InEmps = _DbContext.EmployeeTempBadge.Where(emp => emp.EmployeeId == EmployeeId);
+            var InEmps = _DbContext.EmployeeTempBadge.Where(emp => emp.EmployeeId == EmployeeId && emp.AssignT!=null);
             foreach(var x in InEmps)
             {
                 x.SignOutT = System.DateTime.Now;

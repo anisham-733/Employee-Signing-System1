@@ -47,7 +47,7 @@ namespace Employee.SignIn.System
             services.AddScoped<ApplicationUser, ApplicationUser>();
             //services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<Microsoft.AspNetCore.Identity.UserManager<ApplicationUser>, Microsoft.AspNetCore.Identity.UserManager<ApplicationUser>>();
-            services.AddScoped<IAccountRepository, AccountRepository>();
+           
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IGuardService, GuardService>();

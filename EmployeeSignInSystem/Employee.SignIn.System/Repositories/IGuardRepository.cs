@@ -10,6 +10,7 @@ namespace EmployeeSignInSystem.Repositories
         int SaveAssignTime(string TempBadge,string Id);
         IEnumerable<EmpQueueDetails> BadgeOutEmps();
         IEnumerable<EmployeeTempBadge> GetReport(DateTime SDate=default, DateTime EDate=default,string FirstName="", string LastName="");
-        IEnumerable<EmployeeTempBadge> GetReportByTimePeriod(DateTime Sdate, DateTime EDate);
+        
+        IEnumerable<EmployeeTempBadge> GetReportByTimePeriod(DateTime? Sdate = null, DateTime? EDate = null);
     }
 }

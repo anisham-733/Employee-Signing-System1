@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 
 namespace EmployeeSignInSystem.Repositories
@@ -11,6 +12,8 @@ namespace EmployeeSignInSystem.Repositories
     public class GuardRepository:IGuardRepository
     {
         private readonly EmployeeSigningSystemContext _DBContext;
+        private  DateTime Sdate = new DateTime(0001, 01, 01, 00, 00, 00);
+        private  DateTime newtemp = new  DateTime(2050, 01, 01, 00, 00, 00);
         public GuardRepository(EmployeeSigningSystemContext dbContext)
         {
             _DBContext = dbContext;
@@ -81,11 +84,20 @@ namespace EmployeeSignInSystem.Repositories
             return _DBContext.EmployeeTempBadge.Where(emp => emp.EmployeeFirstName.Contains(FirstName) && emp.EmployeeLastName.Contains(LastName) && emp.SignInT>SDate && emp.SignOutT<EDate && emp.AssignT!=null).ToList();
         }
 
-        public IEnumerable<EmployeeTempBadge> GetReportByTimePeriod(DateTime Sdate, DateTime EDate)
+        public IEnumerable<EmployeeTempBadge> GetReportByTimePeriod(DateTime? Sdate = null , DateTime? EDate =null)
         {
+            var Edate1 = EDate;
+
+            if(EDate == DateTime.MinValue)
+            {
+                Edate1 = DateTime.MaxValue; 
+            }
             //And condition to implement is signout time
-            var getByTime = _DBContext.EmployeeTempBadge.Where(emp => emp.SignInT > Sdate && emp.SignInT<EDate && (emp.SignOutT < EDate || emp.SignOutT==null) && emp.AssignT!=null).ToList();
+            var getByTime = _DBContext.EmployeeTempBadge.Where(emp => (emp.SignInT >= Sdate) && emp.SignInT<Edate1 && (emp.SignOutT < Edate1 || emp.SignOutT==null) && emp.AssignT!=null).ToList();
             return getByTime;
         }
+
+        
+        }
     }
-}
+

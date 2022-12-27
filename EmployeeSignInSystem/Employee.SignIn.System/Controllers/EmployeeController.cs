@@ -57,7 +57,6 @@ namespace EmployeeSignIn.Controllers
             ViewBag.LastName = LastName;
             IEnumerable<EmpQueueDetails> emps = _employeeService.GetEmpsToSignOut(FirstName, LastName);
 
-
             return View(emps);
         }
 

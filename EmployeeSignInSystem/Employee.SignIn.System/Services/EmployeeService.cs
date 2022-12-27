@@ -9,6 +9,10 @@ namespace EmployeeSignInSystem.Services
     public class EmployeeService:IEmployeeService
     {
         private readonly IEmployeeRepository _empRepo;
+        public EmployeeService()
+        {
+
+        }
         public EmployeeService(IEmployeeRepository empRepo)
         {
             _empRepo = empRepo;

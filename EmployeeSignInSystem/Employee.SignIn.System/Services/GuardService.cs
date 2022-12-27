@@ -29,32 +29,32 @@ namespace EmployeeSignInSystem.Services
             return _guardRepo.BadgeOutEmps();
         }
 
-        public IEnumerable<EmployeeTempBadge> GetReport(DateTime Sdate = new DateTime(), DateTime Edate = new DateTime(), string FirstName="", string LastName="")
+        public IEnumerable<EmployeeTempBadge> GetReport(DateTime Sdate, DateTime Edate, string FirstName="", string LastName="")
         {
             DateTime Stemp = new DateTime(0001,01,01,00,00,00);
             DateTime Etemp = new DateTime(0001, 01, 01, 00, 00, 00);
             DateTime newtemp = new DateTime(2050, 01, 01, 00, 00, 00);
 
             //if names given
-            if (!string.IsNullOrEmpty(FirstName) && !string.IsNullOrEmpty(LastName)) 
+            if (!string.IsNullOrEmpty(FirstName) || !string.IsNullOrEmpty(LastName)) 
             {
                 //if dates given
-                if(Sdate!=Stemp && Edate != Etemp)
+                if(Sdate!=Stemp || Edate != Etemp)
                 {
                     //all 4 valid
                     return _guardRepo.GetReport(Sdate,Edate,FirstName,LastName);
                 }
                 //when only names
-                return _guardRepo.GetReport(Stemp,newtemp,FirstName,LastName);
+                return _guardRepo.GetReport(Stemp,newtemp, FirstName="", LastName="");
 
             }
             //names not given
             else 
             { 
-                if (Sdate != Stemp && Edate != Etemp)
+                if (Sdate != Stemp || Edate != Etemp)
                 {
                     //dates given
-                    return _guardRepo.GetReportByTimePeriod(Sdate, Edate);
+                    return _guardRepo.GetReportByTimePeriod(Sdate,Edate);
 
                 }
                 //dates not given
