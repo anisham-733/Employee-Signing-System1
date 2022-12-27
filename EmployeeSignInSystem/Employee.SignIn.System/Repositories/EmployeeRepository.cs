@@ -86,10 +86,6 @@ namespace EmployeeSignInSystem.Repositories
             return _DbContext.SaveChanges();            
         }
 
-        //public void SaveSignInTime(string id)
-        //{
-        //    
-        //    IEnumerable<EmployeeTempBadge> _tempBadge=
-        //}
+      
     }
 }

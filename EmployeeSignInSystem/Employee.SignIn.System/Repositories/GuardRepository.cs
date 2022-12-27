@@ -78,13 +78,13 @@ namespace EmployeeSignInSystem.Repositories
         public IEnumerable<EmployeeTempBadge> GetReport(DateTime SDate = default, DateTime EDate = default, string FirstName = "", string LastName = "")
         {
             //for all 4 && condition
-            return _DBContext.EmployeeTempBadge.Where(emp => emp.EmployeeFirstName.Contains(FirstName) && emp.EmployeeLastName.Contains(LastName) && emp.SignInT>SDate && emp.SignOutT<EDate).ToList();
+            return _DBContext.EmployeeTempBadge.Where(emp => emp.EmployeeFirstName.Contains(FirstName) && emp.EmployeeLastName.Contains(LastName) && emp.SignInT>SDate && emp.SignOutT<EDate && emp.AssignT!=null).ToList();
         }
 
         public IEnumerable<EmployeeTempBadge> GetReportByTimePeriod(DateTime Sdate, DateTime EDate)
         {
             //And condition to implement is signout time
-            var getByTime = _DBContext.EmployeeTempBadge.Where(emp => emp.SignInT > Sdate && emp.SignInT<EDate && (emp.SignOutT < EDate || emp.SignOutT==null)).ToList();
+            var getByTime = _DBContext.EmployeeTempBadge.Where(emp => emp.SignInT > Sdate && emp.SignInT<EDate && (emp.SignOutT < EDate || emp.SignOutT==null) && emp.AssignT!=null).ToList();
             return getByTime;
         }
     }
