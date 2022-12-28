@@ -1,27 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using EmployeeSignInSystem.Models;
 using EmployeeSignInSystem.Repositories;
 using EmployeeSignInSystem.Services;
 using Moq;
+using Xunit;
 
 namespace EmpSigning_Tests.EmployeeRepo
 {
-    public class EmpRepository
+    public class EmpRepositoryTests
     {
         private readonly Mock<IEmployeeRepository> _empRepo;
-        public EmpRepository()
+        public EmpRepositoryTests()
         {
             _empRepo= new Mock<IEmployeeRepository>();
         }
-
-        public void GetAllEmployees_EmpList()
+        [Fact]
+        public void GetEmployeesByName_EmpList()
         {
+            //Arrange
             var empList = GetEmployeeDetails();
-            _empRepo.Setup(x=>x.GetAllEmployees()).Returns(empList);
+            _empRepo.Setup(x => x.GetEmployeesByName("Alice", "Mark")).Returns((IEnumerable<EmployeeDetails>)empList[1]);
 
-            //var EmpService = new EmployeeService(_empRepo.Object);
+            //Act
+            var EmpService = new EmployeeSignInSystem.Services.EmployeeService(_empRepo.Object);
+            IEnumerable<EmployeeDetails> EmpResult = EmpService.GetEmployeesByName("Alice", "Mark");
+
+            //Assert
+            Assert.NotNull(EmpResult);
+            //Assert.Equal(empList[1].Id, EmpResult.Id);
+            //Assert.True(empList[1].Id, EmpResult);
+
         }
         private List<EmployeeDetails> GetEmployeeDetails()
         {
