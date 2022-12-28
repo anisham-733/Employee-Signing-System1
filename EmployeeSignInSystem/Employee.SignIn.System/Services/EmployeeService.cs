@@ -41,7 +41,7 @@ namespace EmployeeSignInSystem.Services
             return _empRepo.GetAllEmployees();
         }
 
-        public IEnumerable<EmployeeDetails> GetEmployeesByName(string FirstName, string LastName)
+        public List<EmployeeDetails> GetEmployeesByName(string FirstName, string LastName)
         {
             return _empRepo.GetEmployeesByName(FirstName, LastName);
 

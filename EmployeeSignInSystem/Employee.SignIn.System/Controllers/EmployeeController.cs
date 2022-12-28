@@ -30,7 +30,7 @@ namespace EmployeeSignIn.Controllers
             
             ViewBag.RequestStatus = TempData["RequestStatus"];
             ViewBag.SignOutEmp = TempData["SignOutEmp"];
-            IEnumerable<EmployeeDetails> empRecords = _employeeService.GetEmployeesByName(FirstName, LastName);
+            List<EmployeeDetails> empRecords = _employeeService.GetEmployeesByName(FirstName, LastName);
             return View(empRecords);
         }
         [HttpGet]

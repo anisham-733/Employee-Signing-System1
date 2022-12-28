@@ -81,6 +81,14 @@ namespace EmployeeSignInSystem.Repositories
         public IEnumerable<EmployeeTempBadge> GetReport(DateTime SDate = default, DateTime EDate = default, string FirstName = "", string LastName = "")
         {
             //for all 4 && condition
+            if (LastName == null)
+            {
+                LastName= string.Empty;
+            }
+            if(FirstName== null)
+            {
+                FirstName= string.Empty;
+            }
             return _DBContext.EmployeeTempBadge.Where(emp => emp.EmployeeFirstName.Contains(FirstName) && emp.EmployeeLastName.Contains(LastName) && emp.SignInT>SDate && emp.SignOutT<EDate && emp.AssignT!=null).ToList();
         }
 

@@ -41,10 +41,10 @@ namespace EmployeeSignInSystem.Repositories
             return employees;
         }
 
-        public IEnumerable<EmployeeDetails> GetEmployeesByName(string FirstName, string LastName)
+        public List<EmployeeDetails> GetEmployeesByName(string FirstName, string LastName)
         {
 
-            IEnumerable<EmployeeDetails> matchingRecords = _DbContext.EmployeeDetails.
+            List<EmployeeDetails> matchingRecords = _DbContext.EmployeeDetails.
                 Where(emp => emp.FirstName.Contains(FirstName) || emp.LastName.Contains(LastName)).ToList();
 
             return matchingRecords;

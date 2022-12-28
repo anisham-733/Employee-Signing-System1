@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
+using EmployeeSignIn.Controllers;
 using EmployeeSignInSystem.Models;
 using EmployeeSignInSystem.Repositories;
 using EmployeeSignInSystem.Services;
@@ -21,19 +23,60 @@ namespace EmpSigning_Tests.EmployeeRepo
         public void GetEmployeesByName_EmpList()
         {
             //Arrange
-            var empList = GetEmployeeDetails();
-            _empRepo.Setup(x => x.GetEmployeesByName("Alice", "Mark")).Returns((IEnumerable<EmployeeDetails>)empList[1]);
+            List<EmployeeDetails> empList = GetEmployeeDetails();
+            //IEnumerable<EmployeeDetails> employeeDetails = empList;
+            _empRepo.Setup(x => x.GetEmployeesByName("Alice", "Mark")).Returns(empList[1]);
 
             //Act
             var EmpService = new EmployeeSignInSystem.Services.EmployeeService(_empRepo.Object);
             IEnumerable<EmployeeDetails> EmpResult = EmpService.GetEmployeesByName("Alice", "Mark");
 
+            //  Controller
+            
             //Assert
             Assert.NotNull(EmpResult);
-            //Assert.Equal(empList[1].Id, EmpResult.Id);
+            Assert.Equal(empList[1].Id, EmpResult);
             //Assert.True(empList[1].Id, EmpResult);
 
         }
+        [Fact]
+
+        public void GetAllEmployees_Emps()
+        {
+            //arrange
+            var empList = GetEmployeeDetails();
+            _empRepo.Setup(x => x.GetAllEmployees()).Returns(empList);
+
+            var EmpService = new EmployeeSignInSystem.Services.EmployeeService(_empRepo.Object);
+
+            //act
+            var result = EmpService.GetAllEmployees();
+
+            //assert
+            Assert.NotNull(result);
+            Assert.Equal(GetEmployeeDetails().Count(),result.Count());
+            Assert.Equal(GetEmployeeDetails().ToString(),result.ToString());
+            Assert.True(empList.Equals(empList));
+        }
+        [Fact]
+
+        public void SaveSignOutTime_Product()
+        {
+            var empList = GetEmployeeDetails();
+            _empRepo.Setup(x => x.SaveSignOutTime("104")).Returns(1);
+
+            var EmpService = new EmployeeSignInSystem.Services.EmployeeService(_empRepo.Object);
+
+            //act
+            var result = EmpService.SaveSignOutTime("104");
+
+            //assert
+            Assert.NotNull(result);
+            Assert.Equal(empList[2].Id, result.ToString());
+            Assert.True(empList[2].Id == result.ToString());
+
+        }
+
         private List<EmployeeDetails> GetEmployeeDetails()
         {
             List<EmployeeDetails> _employees = new List<EmployeeDetails>
@@ -43,7 +86,7 @@ namespace EmpSigning_Tests.EmployeeRepo
                     Id="104",
                     FirstName="Dia",
                     LastName="Mirza",
-                    Photo="https://sanidhyastorage.blob.core.windows.net/jamesbond/Employees/104pic2.jpeg"
+                    Photo="https://sanidhyastorage.blob.core.windows.net/jamesbond/Employees/309Passport Size photo Professional.jpg"
                 },
                 new EmployeeDetails()
                 {

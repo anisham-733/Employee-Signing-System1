@@ -5,7 +5,7 @@ namespace EmployeeSignInSystem.Repositories
 {
     public interface IEmployeeRepository
     {
-        IEnumerable<EmployeeDetails> GetEmployeesByName(string FirstName, string LastName);
+        List<EmployeeDetails> GetEmployeesByName(string FirstName, string LastName);
         IEnumerable<EmployeeDetails> GetAllEmployees();
 
         IEnumerable<EmpQueueDetails> GetEmpsToSignOut(string FirstName, string LastName);

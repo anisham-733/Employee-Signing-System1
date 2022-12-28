@@ -45,7 +45,7 @@ namespace EmployeeSignInSystem.Services
                     return _guardRepo.GetReport(Sdate,Edate,FirstName,LastName);
                 }
                 //when only names
-                return _guardRepo.GetReport(Stemp,newtemp, FirstName="", LastName="");
+                return _guardRepo.GetReport(Stemp,newtemp, FirstName, LastName);
 
             }
             //names not given
