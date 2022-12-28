@@ -25,18 +25,18 @@ namespace EmpSigning_Tests.EmployeeRepo
             //Arrange
             List<EmployeeDetails> empList = GetEmployeeDetails();
             //IEnumerable<EmployeeDetails> employeeDetails = empList;
-            _empRepo.Setup(x => x.GetEmployeesByName("Alice", "Mark")).Returns(empList[1]);
+            _empRepo.Setup(x => x.GetEmployeesByName("Alice", "Mark")).Returns(empList);
 
             //Act
             var EmpService = new EmployeeSignInSystem.Services.EmployeeService(_empRepo.Object);
-            IEnumerable<EmployeeDetails> EmpResult = EmpService.GetEmployeesByName("Alice", "Mark");
+           List<EmployeeDetails> EmpResult = EmpService.GetEmployeesByName("Alice", "Mark");
 
             //  Controller
-            
+                        
             //Assert
             Assert.NotNull(EmpResult);
-            Assert.Equal(empList[1].Id, EmpResult);
-            //Assert.True(empList[1].Id, EmpResult);
+            Assert.Equal(empList[1].Id, EmpResult[1].Id);
+            Assert.True(empList[1].Id == EmpResult[1].Id);
 
         }
         [Fact]
@@ -72,8 +72,8 @@ namespace EmpSigning_Tests.EmployeeRepo
 
             //assert
             Assert.NotNull(result);
-            Assert.Equal(empList[2].Id, result.ToString());
-            Assert.True(empList[2].Id == result.ToString());
+            Assert.Equal(1,result );
+            Assert.True(1 == result);
 
         }
 

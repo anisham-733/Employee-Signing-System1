@@ -10,5 +10,6 @@ namespace EmployeeSignInSystem.Services
         int SaveAssignTime(string TempBadge, string Id);
         IEnumerable<EmpQueueDetails> BadgeOutEmps();
         IEnumerable<EmployeeTempBadge> GetReport(DateTime Sdate = new DateTime(), DateTime Edate = new DateTime(), string FirstName = "", string LastName = "");
+        
     }
 }

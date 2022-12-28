@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 namespace EmployeeSignInSystem.Repositories
 {
@@ -91,7 +92,7 @@ namespace EmployeeSignInSystem.Repositories
             }
             return _DBContext.EmployeeTempBadge.Where(emp => emp.EmployeeFirstName.Contains(FirstName) && emp.EmployeeLastName.Contains(LastName) && emp.SignInT>SDate && emp.SignOutT<EDate && emp.AssignT!=null).ToList();
         }
-
+        
         public IEnumerable<EmployeeTempBadge> GetReportByTimePeriod(DateTime? Sdate = null , DateTime? EDate =null)
         {
             var Edate1 = EDate;
@@ -103,6 +104,36 @@ namespace EmployeeSignInSystem.Repositories
             //And condition to implement is signout time
             var getByTime = _DBContext.EmployeeTempBadge.Where(emp => (emp.SignInT >= Sdate) && emp.SignInT<Edate1 && (emp.SignOutT < Edate1 || emp.SignOutT==null) && emp.AssignT!=null).ToList();
             return getByTime;
+        }
+
+        public IEnumerable<EmployeeTempBadge> GetReport1(DateTime Sdate, DateTime Edate, string FirstName, string LastName)
+        {
+            IQueryable<EmployeeTempBadge> query = _DBContext.EmployeeTempBadge.Where(emp => emp.Id != null && emp.AssignT!=null);
+
+            if (!string.IsNullOrEmpty(FirstName))
+            {
+                query = query.Where(emp => emp.EmployeeFirstName.Contains(FirstName));
+            }
+            if(!string.IsNullOrEmpty(LastName))
+            {
+                query = query.Where(emp => emp.EmployeeLastName.Contains(LastName));
+            }
+            if (Sdate != DateTime.MinValue || Sdate==DateTime.MinValue)
+            {
+                query = query.Where(emp => emp.SignInT >= Sdate);
+            }
+            if(Edate!= DateTime.MinValue)
+            {
+                query = query.Where(emp => emp.SignOutT <= Edate);
+            }
+            if (Edate == DateTime.MinValue)
+            {
+                Edate = DateTime.MaxValue;
+                query = query.Where(emp => emp.SignOutT <= Edate);
+            }
+
+
+            return query.ToList();
         }
 
         
