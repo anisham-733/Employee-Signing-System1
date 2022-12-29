@@ -79,20 +79,7 @@ namespace EmployeeSignInSystem.Repositories
             return inQueueEmps;
         }
 
-        public IEnumerable<EmployeeTempBadge> GetReport(DateTime SDate = default, DateTime EDate = default, string FirstName = "", string LastName = "")
-        {
-            //for all 4 && condition
-            if (LastName == null)
-            {
-                LastName= string.Empty;
-            }
-            if(FirstName== null)
-            {
-                FirstName= string.Empty;
-            }
-            return _DBContext.EmployeeTempBadge.Where(emp => emp.EmployeeFirstName.Contains(FirstName) && emp.EmployeeLastName.Contains(LastName) && emp.SignInT>SDate && emp.SignOutT<EDate && emp.AssignT!=null).ToList();
-        }
-        
+              
         public IEnumerable<EmployeeTempBadge> GetReportByTimePeriod(DateTime? Sdate = null , DateTime? EDate =null)
         {
             var Edate1 = EDate;
@@ -129,14 +116,17 @@ namespace EmployeeSignInSystem.Repositories
             if (Edate == DateTime.MinValue)
             {
                 Edate = DateTime.MaxValue;
-                query = query.Where(emp => emp.SignOutT <= Edate);
+                query = query.Where(emp => emp.SignOutT <= Edate || emp.SignOutT==null);
             }
 
 
             return query.ToList();
         }
 
-        
+        public IEnumerable<EmployeeTempBadge> GetReport(DateTime SDate = default, DateTime EDate = default, string FirstName = "", string LastName = "")
+        {
+            throw new NotImplementedException();
         }
+    }
     }
 
