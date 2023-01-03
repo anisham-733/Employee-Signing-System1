@@ -17,9 +17,11 @@ namespace EmployeeSignInSystem.Services
 
         public int SaveSignInTime(string id,EmployeeTempBadge temp)
         {
+            int result = 0;
             if (_empRepo.checkAlreadyRequested(id))
             {
-                IEnumerable<EmployeeDetails> details = _empRepo.FetchDetails(id);
+                
+                List<EmployeeDetails> details = _empRepo.FetchDetails(id);
                 Random r = new Random();
                 int tempId = r.Next(1, 1000);
                 temp.Id = tempId;
@@ -30,13 +32,15 @@ namespace EmployeeSignInSystem.Services
                 temp.AssignT = null;
                 temp.SignOutT = null;
                 temp.TempBadge = null;
-                return _empRepo.SaveSignInTime(temp);
+                result = _empRepo.SaveSignInTime(temp);
+                return result;
+                
             }
-            return 0;
+            return result;
             
         }
 
-        public IEnumerable<EmployeeDetails> GetAllEmployees()
+        public List<EmployeeDetails> GetAllEmployees()
         {
             return _empRepo.GetAllEmployees();
         }
@@ -54,7 +58,14 @@ namespace EmployeeSignInSystem.Services
 
         public int SaveSignOutTime(string EmployeeId)
         {
-            return _empRepo.SaveSignOutTime(EmployeeId);
+            if (!string.IsNullOrEmpty(EmployeeId))
+            {
+                return _empRepo.SaveSignOutTime(EmployeeId);
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

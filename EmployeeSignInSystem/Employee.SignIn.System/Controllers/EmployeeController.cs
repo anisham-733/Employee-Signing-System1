@@ -33,6 +33,12 @@ namespace EmployeeSignIn.Controllers
             List<EmployeeDetails> empRecords = _employeeService.GetEmployeesByName(FirstName, LastName);
             return View(empRecords);
         }
+
+        public IActionResult GetAll()
+        {
+            List<EmployeeDetails> empRecords = _employeeService.GetAllEmployees();
+            return View("SignIn",empRecords);
+        }
         [HttpGet]
         public IActionResult GetBadgeQueue(string Id,EmployeeTempBadge temp)
         {

@@ -37,7 +37,7 @@ namespace EmployeeSignInSystem.Repositories
             }
             return 0;
             
-            ;          
+                    
 
             
         }

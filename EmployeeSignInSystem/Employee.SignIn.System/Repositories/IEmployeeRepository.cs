@@ -6,10 +6,10 @@ namespace EmployeeSignInSystem.Repositories
     public interface IEmployeeRepository
     {
         List<EmployeeDetails> GetEmployeesByName(string FirstName, string LastName);
-        IEnumerable<EmployeeDetails> GetAllEmployees();
+        List<EmployeeDetails> GetAllEmployees();
 
         IEnumerable<EmpQueueDetails> GetEmpsToSignOut(string FirstName, string LastName);
-        IEnumerable<EmployeeDetails> FetchDetails(string id);
+        List<EmployeeDetails> FetchDetails(string id);
         int SaveSignInTime(EmployeeTempBadge temp);
         int SaveSignOutTime(string EmployeeId);
         bool checkAlreadyRequested(string id);

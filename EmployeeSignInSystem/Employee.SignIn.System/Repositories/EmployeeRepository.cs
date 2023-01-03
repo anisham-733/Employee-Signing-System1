@@ -2,6 +2,7 @@
 using EmployeeSignInSystem.DBContext;
 using EmployeeSignInSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace EmployeeSignInSystem.Repositories
 
         public bool checkAlreadyRequested(string id)
         {
-            IEnumerable<EmployeeTempBadge> checkEmps = _DbContext.EmployeeTempBadge.Where(emp => emp.EmployeeId == id && emp.SignInT.Value.Date == System.DateTime.Today).ToList();
+            List<EmployeeTempBadge> checkEmps = _DbContext.EmployeeTempBadge.Where(emp => emp.EmployeeId == id && emp.SignInT.Value.Date == System.DateTime.Today).ToList();
             if (checkEmps.Count()==0)
             {
                 //not in database
@@ -27,13 +28,13 @@ namespace EmployeeSignInSystem.Repositories
             return false;
         }
 
-        public IEnumerable<EmployeeDetails> FetchDetails(string id)
+        public List<EmployeeDetails> FetchDetails(string id)
         {
-            IEnumerable<EmployeeDetails> details = _DbContext.EmployeeDetails.Where(emp => emp.Id == id).ToList();
+            List<EmployeeDetails> details = _DbContext.EmployeeDetails.Where(emp => emp.Id == id).ToList();
             return details;
         }
 
-        public IEnumerable<EmployeeDetails> GetAllEmployees()
+        public List<EmployeeDetails> GetAllEmployees()
         {
 
 
@@ -43,11 +44,22 @@ namespace EmployeeSignInSystem.Repositories
 
         public List<EmployeeDetails> GetEmployeesByName(string FirstName, string LastName)
         {
+            List<EmployeeDetails> matchingRecords;
+            //if (FirstName==null && LastName==null)
+            //{
+            //    return new List<EmployeeDetails>();
+            //}
 
-            List<EmployeeDetails> matchingRecords = _DbContext.EmployeeDetails.
-                Where(emp => emp.FirstName.Contains(FirstName) || emp.LastName.Contains(LastName)).ToList();
+            if(!string.IsNullOrEmpty(FirstName))
+            {
+                return _DbContext.EmployeeDetails.Where(emp => emp.FirstName.Contains(FirstName)).ToList();
+            }
+            if (!string.IsNullOrEmpty(LastName))
+            {
+                return _DbContext.EmployeeDetails.Where(emp=>emp.LastName.Contains(LastName)).ToList();
 
-            return matchingRecords;
+            }
+            return new List<EmployeeDetails>();
         }
 
         public IEnumerable<EmpQueueDetails> GetEmpsToSignOut(string FirstName, string LastName)
@@ -72,7 +84,8 @@ namespace EmployeeSignInSystem.Repositories
         public int SaveSignInTime(EmployeeTempBadge temp)
         {
             _DbContext.EmployeeTempBadge.Add(temp);
-            return _DbContext.SaveChanges();           
+            return _DbContext.SaveChanges();   
+            
         }
 
         public int SaveSignOutTime(string EmployeeId)
