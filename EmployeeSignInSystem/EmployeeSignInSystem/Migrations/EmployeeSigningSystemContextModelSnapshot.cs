@@ -19,6 +19,20 @@ namespace EmployeeSignInSystem.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("EmployeeSignInSystem.DTO.LoginDTO", b =>
+                {
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Username");
+
+                    b.ToTable("LoginDTO");
+                });
+
             modelBuilder.Entity("EmployeeSignInSystem.DTO.RegisterDTO", b =>
                 {
                     b.Property<string>("Email")
