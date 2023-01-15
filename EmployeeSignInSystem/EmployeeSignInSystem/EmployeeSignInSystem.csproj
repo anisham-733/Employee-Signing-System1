@@ -5,6 +5,7 @@
 	  <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
 	  <PlatformTarget>x64</PlatformTarget>
+	  <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
     <UserSecretsId>17bd4d26-3b0d-4cb8-9bbc-9eb9a50a79b4</UserSecretsId>
 	  
   </PropertyGroup>
