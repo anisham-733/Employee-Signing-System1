@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Employee.SignIn.System\EmployeeSignInSystem.csproj" />
+    <ProjectReference Include="..\EmployeeSignInSystem\EmployeeSignInSystem.csproj" />
   </ItemGroup>
 
 </Project>

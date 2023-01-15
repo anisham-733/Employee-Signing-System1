@@ -83,7 +83,7 @@ namespace Employee.SignIn.System
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Employee}/{action=SignIn}/{id?}");
+                    pattern: "{controller=Employee}/{action=Main}/{id?}");
             });
         }
     }

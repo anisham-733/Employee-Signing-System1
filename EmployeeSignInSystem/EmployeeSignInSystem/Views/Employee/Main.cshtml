@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.CurrentUrl = "~/Employee/Main";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+<div style="background-color:lightskyblue;width:40%;height:20%;position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;padding:25px">
+<div>
+    <h2>Kitchener Temp Badge System</h2>
+</div>
+</div>
+
+<div style="position:fixed;top:60%;left:37%;width:40%;height:40%">
+    <a asp-action="SignIn" class="btn btn-primary" style="background-color:darksalmon;width:42%;height:20%;padding:10px;">SignIn</a>
+    <a asp-action="SignOut" class="btn btn-primary" style="background-color:darksalmon;width:42%;height:20%;padding:10px;">SignOut</a>
+</div>

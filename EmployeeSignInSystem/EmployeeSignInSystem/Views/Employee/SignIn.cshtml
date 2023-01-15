@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<EmployeeSignInSystem.Models.EmployeeDetails>
+@using System.Text.Encodings.Web;
 @{
     ViewBag.CurrentUrl = "~/Employee/SignIn";
 }
-<h4>Search an Employee</h4>
+<h4>@HtmlEncoder.Default.Encode("Search an Employee")</h4>
+
 <hr />
 
 @if (ViewBag.RequestStatus != null)
@@ -68,7 +70,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                TempData["Photo"] = item.Photo;
+                TempData["Photo"] = HtmlEncoder.Default.Encode(item.Photo);
                 <tr>
                     <td>@Html.DisplayFor(model=>item.Id)</td>
                     <td><img src='@TempData["Photo"]' width="200px" height="200px" style="border-radius:50%" /></td>

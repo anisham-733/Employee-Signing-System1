@@ -20,6 +20,11 @@ namespace EmployeeSignIn.Controllers
         {
             _employeeService = employeeService;
         }
+        [HttpGet]
+        public IActionResult Main()
+        {
+            return View();
+        }
 
              
         [HttpGet]
