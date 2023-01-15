@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmpSigning_Tests", "EmpSigning_Tests\EmpSigning_Tests.csproj", "{EEF9D20C-4B2A-4F7B-A46F-E26F8092859A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeSignInSystem", "EmployeeSignInSystem\EmployeeSignInSystem.csproj", "{81C22D73-1F05-4502-AAD4-F56EFA057D11}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EEF9D20C-4B2A-4F7B-A46F-E26F8092859A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEF9D20C-4B2A-4F7B-A46F-E26F8092859A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEF9D20C-4B2A-4F7B-A46F-E26F8092859A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEF9D20C-4B2A-4F7B-A46F-E26F8092859A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{81C22D73-1F05-4502-AAD4-F56EFA057D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{81C22D73-1F05-4502-AAD4-F56EFA057D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81C22D73-1F05-4502-AAD4-F56EFA057D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
