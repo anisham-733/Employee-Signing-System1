@@ -30,7 +30,7 @@ namespace EmployeeSignInSystem.Repositories
                 foreach (var x in badgeOutEmps)
                 {
                     x.TempBadge = TempBadge;
-                    x.AssignT = System.DateTime.Now;
+                    x.AssignT = DateTime.Now;
                 }
                 return _DBContext.SaveChanges();
 

@@ -19,7 +19,7 @@ namespace EmployeeSignInSystem.Repositories
 
         public bool checkAlreadyRequested(string id)
         {
-            List<EmployeeTempBadge> checkEmps = _DbContext.EmployeeTempBadge.Where(emp => emp.EmployeeId == id && emp.SignInT.Value.Date == System.DateTime.Today).ToList();
+            List<EmployeeTempBadge> checkEmps = _DbContext.EmployeeTempBadge.Where(emp => emp.EmployeeId == id && emp.SignInT.Value.Date == DateTime.Today).ToList();
             if (checkEmps.Count()==0)
             {
                 //not in database
@@ -93,7 +93,7 @@ namespace EmployeeSignInSystem.Repositories
             var InEmps = _DbContext.EmployeeTempBadge.Where(emp => emp.EmployeeId == EmployeeId && emp.AssignT!=null);
             foreach(var x in InEmps)
             {
-                x.SignOutT = System.DateTime.Now;
+                x.SignOutT = DateTime.Now;
             }
             return _DbContext.SaveChanges();            
         }
