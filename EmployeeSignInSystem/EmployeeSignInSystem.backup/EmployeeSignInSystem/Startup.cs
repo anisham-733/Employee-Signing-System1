@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using EmployeeSignInSystem.Models.IdentityEntities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNet.Identity;
 
 namespace Employee.SignIn.System
 {

@@ -1,0 +1,330 @@
+﻿{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Back up project",
+          "semanticVersion": "",
+          "informationUri": "https://github.com/dotnet/upgrade-assistant#usage",
+          "rules": [
+            {
+              "id": "Microsoft.DotNet.UpgradeAssistant.Steps.Backup.BackupStep",
+              "fullDescription": {
+                "text": "Back up the current project to another directory"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "Microsoft.DotNet.UpgradeAssistant.Steps.Backup.BackupStep",
+          "level": "note",
+          "message": {
+            "text": "Complete: Project backed up to C:\\Users\\AnishaMahajan\\source\\repos\\GitHub\\Employee-Signing-System1\\EmployeeSignInSystem\\EmployeeSignInSystem.backup\\EmployeeSignInSystem"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/AnishaMahajan/source/repos/GitHub/Employee-Signing-System1/EmployeeSignInSystem/EmployeeSignInSystem.backup/EmployeeSignInSystem"
+                },
+                "region": {}
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Remove package 'Microsoft.AspNet.Identity.Core'",
+          "semanticVersion": "",
+          "informationUri": "https://github.com/dotnet/upgrade-assistant#usage",
+          "rules": [
+            {
+              "id": "Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep+PackageManipulationStep`1[[Microsoft.DotNet.UpgradeAssistant.NuGetReference, Microsoft.DotNet.UpgradeAssistant.Abstractions, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep+PackageManipulationStep`1[[Microsoft.DotNet.UpgradeAssistant.NuGetReference, Microsoft.DotNet.UpgradeAssistant.Abstractions, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]",
+          "level": "note",
+          "message": {
+            "text": "Complete: Remove package 'Microsoft.AspNet.Identity.Core'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/AnishaMahajan/source/repos/GitHub/Employee-Signing-System1/EmployeeSignInSystem/EmployeeSignInSystem/EmployeeSignInSystem.csproj"
+                },
+                "region": {}
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Add framework reference 'Microsoft.AspNetCore.App'",
+          "semanticVersion": "",
+          "informationUri": "https://github.com/dotnet/upgrade-assistant#usage",
+          "rules": [
+            {
+              "id": "Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep+PackageManipulationStep`1[[Microsoft.DotNet.UpgradeAssistant.Reference, Microsoft.DotNet.UpgradeAssistant.Abstractions, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep+PackageManipulationStep`1[[Microsoft.DotNet.UpgradeAssistant.Reference, Microsoft.DotNet.UpgradeAssistant.Abstractions, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]",
+          "level": "note",
+          "message": {
+            "text": "Complete: Add framework reference 'Microsoft.AspNetCore.App'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/AnishaMahajan/source/repos/GitHub/Employee-Signing-System1/EmployeeSignInSystem/EmployeeSignInSystem/EmployeeSignInSystem.csproj"
+                },
+                "region": {}
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Add package 'Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers'",
+          "semanticVersion": "",
+          "informationUri": "https://github.com/dotnet/upgrade-assistant#usage",
+          "rules": [
+            {
+              "id": "Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep+PackageManipulationStep`1[[Microsoft.DotNet.UpgradeAssistant.NuGetReference, Microsoft.DotNet.UpgradeAssistant.Abstractions, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep+PackageManipulationStep`1[[Microsoft.DotNet.UpgradeAssistant.NuGetReference, Microsoft.DotNet.UpgradeAssistant.Abstractions, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]",
+          "level": "note",
+          "message": {
+            "text": "Complete: Add package 'Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/AnishaMahajan/source/repos/GitHub/Employee-Signing-System1/EmployeeSignInSystem/EmployeeSignInSystem/EmployeeSignInSystem.csproj"
+                },
+                "region": {}
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Add package 'Microsoft.AspNetCore.Mvc.NewtonsoftJson'",
+          "semanticVersion": "",
+          "informationUri": "https://github.com/dotnet/upgrade-assistant#usage",
+          "rules": [
+            {
+              "id": "Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep+PackageManipulationStep`1[[Microsoft.DotNet.UpgradeAssistant.NuGetReference, Microsoft.DotNet.UpgradeAssistant.Abstractions, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]",
+              "fullDescription": {
+                "text": "Reference to Newtonsoft package (Microsoft.AspNetCore.Mvc.NewtonsoftJson, version 3.1.32) needs to be added"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep+PackageManipulationStep`1[[Microsoft.DotNet.UpgradeAssistant.NuGetReference, Microsoft.DotNet.UpgradeAssistant.Abstractions, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]",
+          "level": "note",
+          "message": {
+            "text": "Complete: Add package 'Microsoft.AspNetCore.Mvc.NewtonsoftJson'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/AnishaMahajan/source/repos/GitHub/Employee-Signing-System1/EmployeeSignInSystem/EmployeeSignInSystem/EmployeeSignInSystem.csproj"
+                },
+                "region": {}
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Remove package 'Microsoft.EntityFrameworkCore.Design'",
+          "semanticVersion": "",
+          "informationUri": "https://github.com/dotnet/upgrade-assistant#usage",
+          "rules": [
+            {
+              "id": "Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep+PackageManipulationStep`1[[Microsoft.DotNet.UpgradeAssistant.NuGetReference, Microsoft.DotNet.UpgradeAssistant.Abstractions, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]",
+              "fullDescription": {
+                "text": "Package Microsoft.EntityFrameworkCore.Design needs to be removed as its a transitive dependency that is not required"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep+PackageManipulationStep`1[[Microsoft.DotNet.UpgradeAssistant.NuGetReference, Microsoft.DotNet.UpgradeAssistant.Abstractions, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]",
+          "level": "note",
+          "message": {
+            "text": "Complete: Remove package 'Microsoft.EntityFrameworkCore.Design'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/AnishaMahajan/source/repos/GitHub/Employee-Signing-System1/EmployeeSignInSystem/EmployeeSignInSystem/EmployeeSignInSystem.csproj"
+                },
+                "region": {}
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Update TFM",
+          "semanticVersion": "",
+          "informationUri": "https://github.com/dotnet/upgrade-assistant#usage",
+          "rules": [
+            {
+              "id": "Microsoft.DotNet.UpgradeAssistant.Steps.ProjectFormat.SetTFMStep",
+              "fullDescription": {
+                "text": "Update TFM for current project"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "Microsoft.DotNet.UpgradeAssistant.Steps.ProjectFormat.SetTFMStep",
+          "level": "note",
+          "message": {
+            "text": "Complete: Updated TFM to net7.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/AnishaMahajan/source/repos/GitHub/Employee-Signing-System1/EmployeeSignInSystem/EmployeeSignInSystem/EmployeeSignInSystem.csproj"
+                },
+                "region": {}
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Apply fix for UA0001: ASP.NET Core projects should not reference ASP.NET namespaces",
+          "semanticVersion": "",
+          "informationUri": "https://github.com/dotnet/upgrade-assistant#usage",
+          "rules": [
+            {
+              "id": "UA0001",
+              "fullDescription": {
+                "text": "Update source files to automatically fix upgrade analyzer UA0001"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UA0001",
+          "level": "note",
+          "message": {
+            "text": "Complete: Diagnostic UA0001 fixed in C:\\Users\\AnishaMahajan\\source\\repos\\GitHub\\Employee-Signing-System1\\EmployeeSignInSystem\\EmployeeSignInSystem\\Controllers\\EmployeeController.cs"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/AnishaMahajan/source/repos/GitHub/Employee-Signing-System1/EmployeeSignInSystem/EmployeeSignInSystem/Controllers/EmployeeController.cs"
+                },
+                "region": {}
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "Apply fix for UA0001: ASP.NET Core projects should not reference ASP.NET namespaces",
+          "semanticVersion": "",
+          "informationUri": "https://github.com/dotnet/upgrade-assistant#usage",
+          "rules": [
+            {
+              "id": "UA0001",
+              "fullDescription": {
+                "text": "Update source files to automatically fix upgrade analyzer UA0001"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "UA0001",
+          "level": "note",
+          "message": {
+            "text": "Complete: Diagnostic UA0001 fixed in C:\\Users\\AnishaMahajan\\source\\repos\\GitHub\\Employee-Signing-System1\\EmployeeSignInSystem\\EmployeeSignInSystem\\Startup.cs"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/AnishaMahajan/source/repos/GitHub/Employee-Signing-System1/EmployeeSignInSystem/EmployeeSignInSystem/Startup.cs"
+                },
+                "region": {}
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits"
+    }
+  ]
+}
